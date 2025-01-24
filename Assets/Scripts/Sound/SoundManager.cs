@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -34,7 +33,6 @@ public class SoundManager : MonoBehaviour
             audioSources.Add(source);
         }
     }
-
 
     public void PlayRandomSound(SoundData soundData)
     {

@@ -21,7 +21,6 @@ public class PlayerController : Subject
         Movement();
     }
 
-
     private void Movement()
     {
         Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
