@@ -11,8 +11,6 @@ public class PlayerController : MonoBehaviour
     Rigidbody rb;
 
     Vector2 velocity;
-    bool isGrounded = false;
-
 
     void Start()
     {
@@ -49,5 +47,10 @@ public class PlayerController : MonoBehaviour
         velocity = Vector2.ClampMagnitude(velocity, maxSpeed);
 
         rb.velocity = new Vector2(velocity.x, velocity.y);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        //NotifyObservers(PlayerAction.Eat);
     }
 }
