@@ -8,4 +8,10 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] List<GameObject> smallEnemies;
     [SerializeField] List<GameObject> mediumEnemies;
     [SerializeField] List<GameObject> largeEnemies;
+
+
+    private void EnemySpawner()
+    {
+
+    }
 }
