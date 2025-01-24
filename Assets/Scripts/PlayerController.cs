@@ -35,19 +35,18 @@ public class PlayerController : MonoBehaviour
 
     private void Movement()
     {
-        float x = Input.GetAxisRaw("Horizontal");
-        float y = Input.GetAxisRaw("Vertical");
+        Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
-        velocity.x += x * acceleration * Time.fixedDeltaTime;
-        velocity.y += y * acceleration * Time.fixedDeltaTime;
+        velocity += input * acceleration * Time.fixedDeltaTime;
 
-        velocity.x = Mathf.Clamp(velocity.x, -maxSpeed, maxSpeed);
-        velocity.y = Mathf.Clamp(velocity.y, -maxSpeed, maxSpeed);
 
+        // ToDo player comes to halt when velocity is close to 0.
         // if (x == 0 || (x < 0 == xVelocity > 0))
         // {
         //     xVelocity *= 1 - (deceleration * Time.fixedDeltaTime);
         // }
+
+        velocity = Vector2.ClampMagnitude(velocity, maxSpeed);
 
         rb.velocity = new Vector2(velocity.x, velocity.y);
     }
