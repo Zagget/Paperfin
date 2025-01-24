@@ -9,39 +9,42 @@ public class PlayerController : Subject
     public float deceleration = 20;
 
     Rigidbody rb;
-
     Vector2 velocity;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-
-        Physics2D.queriesStartInColliders = false;
     }
 
     void Update()
     {
-        AdjustGravity();
         Movement();
     }
 
-    private void AdjustGravity()
-    {
-        //ToDO Downward force
-    }
 
     private void Movement()
     {
         Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
+        if (input.magnitude > 0)
+        {
+            velocity += input.normalized * acceleration * Time.fixedDeltaTime;
+        }
+        else
+        {
+            // Apply deceleration if there's no input
+            float decelerationAmount = deceleration * Time.fixedDeltaTime;
+            if (velocity.magnitude > decelerationAmount)
+            {
+                velocity = velocity.normalized * (velocity.magnitude - decelerationAmount);
+            }
+            else
+            {
+                velocity = Vector2.zero;
+            }
+        }
+
         velocity += input * acceleration * Time.fixedDeltaTime;
-
-
-        // ToDo player comes to halt when velocity is close to 0.
-        // if (x == 0 || (x < 0 == xVelocity > 0))
-        // {
-        //     xVelocity *= 1 - (deceleration * Time.fixedDeltaTime);
-        // }
 
         velocity = Vector2.ClampMagnitude(velocity, maxSpeed);
 
@@ -52,8 +55,8 @@ public class PlayerController : Subject
     {
         if (other.CompareTag("SeaWeed"))
         {
-            NotifyObservers(PlayerAction.Hide);
             Debug.Log("Player is hiding");
+            NotifyObservers(PlayerAction.Hide);
         }
 
         // if (other.CompareTag("enemy"))
@@ -66,8 +69,8 @@ public class PlayerController : Subject
     {
         if (other.CompareTag("SeaWeed"))
         {
-            NotifyObservers(PlayerAction.Normal);
             Debug.Log("Player is no longer hiding");
+            NotifyObservers(PlayerAction.Normal);
         }
     }
 }
