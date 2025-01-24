@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : Subject
 {
     [Header("Movement")]
     public float maxSpeed = 8;
@@ -17,7 +17,6 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
 
         Physics2D.queriesStartInColliders = false;
-
     }
 
     void Update()
@@ -51,6 +50,24 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //NotifyObservers(PlayerAction.Eat);
+        if (other.CompareTag("SeaWeed"))
+        {
+            NotifyObservers(PlayerAction.Hide);
+            Debug.Log("Player is hiding");
+        }
+
+        // if (other.CompareTag("enemy"))
+        // {
+        //     NotifyObservers(PlayerAction.Eat);
+        // }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("SeaWeed"))
+        {
+            NotifyObservers(PlayerAction.Normal);
+            Debug.Log("Player is no longer hiding");
+        }
     }
 }
