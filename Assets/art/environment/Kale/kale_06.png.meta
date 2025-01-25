@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 30400795f85505642aec3ec7fe871508
+guid: 91320884da09ae4468e84eb2b088b372
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: kale_01_0
+      name: kale_06_0
       rect:
         serializedVersion: 2
-        x: 18
+        x: 91
         y: 0
-        width: 313
-        height: 1272
+        width: 220
+        height: 965
       alignment: 9
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0525b8977d15e8245bee1a67bae582c1
-      internalID: 1071201021
+      spriteID: a142a3aa9788cfe4b8071b25de6672fd
+      internalID: 764343097
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: kale_01_1
+      name: kale_06_1
       rect:
         serializedVersion: 2
-        x: 383
+        x: 344
         y: 0
-        width: 288
-        height: 1234
+        width: 235
+        height: 973
       alignment: 9
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bb9ebd09fecc460469003f45dd3b9c3f
-      internalID: 371318099
+      spriteID: b442c5436480b9442b0e23ca2392569b
+      internalID: 105225769
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: kale_01_2
+      name: kale_06_2
       rect:
         serializedVersion: 2
-        x: 723
+        x: 672
         y: 0
-        width: 327
-        height: 833
+        width: 240
+        height: 985
       alignment: 9
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,50 +166,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 061c72de706d62241a003e2d0bf04506
-      internalID: -1156553630
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: kale_01_3
-      rect:
-        serializedVersion: 2
-        x: 1085
-        y: 0
-        width: 230
-        height: 1117
-      alignment: 9
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3e4fb9fe8dc08b24a8769afd7508fbe3
-      internalID: 1268955218
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: kale_01_4
-      rect:
-        serializedVersion: 2
-        x: 1391
-        y: 0
-        width: 267
-        height: 1202
-      alignment: 9
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: de9f26353553097499a576b5664ce44b
-      internalID: 383417577
+      spriteID: a75ae9e3363a2844c89a293dbb08fea3
+      internalID: 1574620646
       vertices: []
       indices: 
       edges: []
@@ -217,7 +175,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 9ef760d34561a5c4b8f1bca862bb0f4e
     internalID: 0
     vertices: []
     indices: 
@@ -225,11 +183,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      kale_01_0: 1071201021
-      kale_01_1: 371318099
-      kale_01_2: -1156553630
-      kale_01_3: 1268955218
-      kale_01_4: 383417577
+      kale_06_0: 764343097
+      kale_06_1: 105225769
+      kale_06_2: 1574620646
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
