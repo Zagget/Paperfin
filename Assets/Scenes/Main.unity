@@ -1162,6 +1162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   amountFishAte: 0
+  enemyEating: {fileID: 11400000, guid: 8d0d6956345160841b36e64597fdd2d3, type: 2}
 --- !u!1 &1299444470
 GameObject:
   m_ObjectHideFlags: 0
@@ -1199,7 +1200,6 @@ MonoBehaviour:
   maxSpeed: 7
   acceleration: 5
   deceleration: 1
-  dashPower: 5
   dashCooldown: 1.5
   dashDuration: 0.25
   dashSpeed: 15
@@ -1342,7 +1342,7 @@ GameObject:
   - component: {fileID: 1394183923}
   - component: {fileID: 1394183924}
   m_Layer: 0
-  m_Name: PlayerAudio
+  m_Name: AudioEvents
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1376,9 +1376,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSubject: {fileID: 1299444471}
+  gameManager: {fileID: 1214989214}
   DeathSounds: {fileID: 11400000, guid: 19be38b6e32550f45947b2dd6b9f8aaf, type: 2}
   HidingSounds: {fileID: 11400000, guid: 471360c02c15bcb418c4062eb8b5dbb5, type: 2}
-  DashShounds: {fileID: 11400000, guid: f8bedc1c117574f4da3d01b9b33f40c6, type: 2}
+  DashSounds: {fileID: 11400000, guid: f8bedc1c117574f4da3d01b9b33f40c6, type: 2}
+  EatingSounds: {fileID: 11400000, guid: 8d0d6956345160841b36e64597fdd2d3, type: 2}
 --- !u!4 &1466101190 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3563187428026559049, guid: f57f631446bc433419c6ce4ac02abb0f, type: 3}

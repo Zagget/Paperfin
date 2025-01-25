@@ -7,7 +7,6 @@ public class PlayerController : Subject
     [SerializeField] float maxSpeed = 8;
     [SerializeField] float acceleration = 5;
     [SerializeField] float deceleration = 20;
-    [SerializeField] float dashPower = 5;
 
     [Header("Dash")]
     [SerializeField] float dashCooldown = 0.5f;
@@ -69,7 +68,7 @@ public class PlayerController : Subject
         // Check if dash is available and the player presses the dash button
         if (Time.time - lastDashTime >= dashCooldown && Input.GetKeyDown(KeyCode.Space) && !isDashing)
         {
-            NotifyObservers(PlayerAction.Dashing);
+            NotifyObservers(Action.Dashing);
             StartDash();
         }
 
@@ -111,7 +110,7 @@ public class PlayerController : Subject
         if (other.CompareTag("SeaWeed"))
         {
             Debug.Log("Player is hiding");
-            NotifyObservers(PlayerAction.Hide);
+            NotifyObservers(Action.Hide);
         }
     }
 
@@ -120,7 +119,7 @@ public class PlayerController : Subject
         if (other.CompareTag("SeaWeed"))
         {
             Debug.Log("Player is no longer hiding");
-            NotifyObservers(PlayerAction.Normal);
+            NotifyObservers(Action.Normal);
         }
     }
 }

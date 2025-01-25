@@ -12,4 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b75bfd13a5dd5f45a1c3b4fda1c128e, type: 3}
   m_Name: PlayerEat
   m_EditorClassIdentifier: 
-  sounds: []
+  sounds:
+  - name: eat1
+    clip: {fileID: 8300000, guid: 18aea0493ff22f544838b58913cb298c, type: 3}
+    loop: 0
+    mixer: {fileID: -5500313978763485721, guid: d0c2e97e0d038e241aa51d6bad2bff16, type: 2}
+  - name: eat2
+    clip: {fileID: 8300000, guid: ce704a18a05d1d742b6c0be4c3212d2a, type: 3}
+    loop: 0
+    mixer: {fileID: -5500313978763485721, guid: d0c2e97e0d038e241aa51d6bad2bff16, type: 2}
+  - name: eat3
+    clip: {fileID: 8300000, guid: dcf0f641e2460bd418a94ece95cdd811, type: 3}
+    loop: 0
+    mixer: {fileID: -5500313978763485721, guid: d0c2e97e0d038e241aa51d6bad2bff16, type: 2}

@@ -21,20 +21,20 @@ public class CameraFollow : MonoBehaviour, IObserver
         }
     }
 
-    public void OnNotify(PlayerAction action)
+    public void OnNotify(Action action)
     {
-        if (action == PlayerAction.Die)
+        if (action == Action.Die)
         {
             Debug.Log("Player died,");
             followplayer = false;
         }
 
-        if (action == PlayerAction.Eat)
+        if (action == Action.Eat)
         {
             //ToDO If we want camera shake etc.
         }
 
-        if (action == PlayerAction.Hide)
+        if (action == Action.Hide)
         {
             //ToDO some camera effect when hiding.
         }

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -72,6 +73,22 @@ public class SoundManager : MonoBehaviour
         PlayClip(randomEntry.clip, randomEntry.loop, randomEntry.mixer);
     }
 
+    public void PlayRandomSoundAtPoint(SoundData soundData, AudioSource source)
+    {
+        bool empty = CheckIfSoundDataEmpty(soundData);
+        if (empty)
+        {
+            return;
+        }
+
+        // Pick a random sound entry
+        SoundData.SoundEntry randomEntry = soundData.sounds[Random.Range(0, soundData.sounds.Length)];
+
+        source.clip = randomEntry.clip;
+        source.outputAudioMixerGroup = randomEntry.mixer;
+        source.Play();
+    }
+
     private void PlayClip(AudioClip clip, bool loop, AudioMixerGroup mixer)
     {
         AudioSource currentSource = audioSources[currentAudioSourceIndex];
@@ -86,7 +103,7 @@ public class SoundManager : MonoBehaviour
 
         // Move to the next audio source in the list
         currentAudioSourceIndex = (currentAudioSourceIndex + 1) % audioSources.Count;
-        Debug.Log($"SOUND: Played {clip} on {mixer}");
+        Debug.Log($"SOUND: Played {clip}");
     }
 
     private bool CheckIfSoundDataEmpty(SoundData soundData)

@@ -1,4 +1,4 @@
 public interface IObserver
 {
-    void OnNotify(PlayerAction action);
+    void OnNotify(Action action);
 }

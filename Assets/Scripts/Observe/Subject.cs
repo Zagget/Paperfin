@@ -17,7 +17,7 @@ public class Subject : MonoBehaviour
     }
 
     // Notify all observers about an event
-    public void NotifyObservers(PlayerAction action)
+    public void NotifyObservers(Action action)
     {
         foreach (IObserver observer in observers)
         {
