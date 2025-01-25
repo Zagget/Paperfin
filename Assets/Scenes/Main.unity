@@ -903,6 +903,9 @@ MonoBehaviour:
   smoothTime: 0.25
   target: {fileID: 1299444475}
   ManagerSubject: {fileID: 1214989214}
+  fovIncreaseFactor: 1.2
+  fovSmoothTime: 5
+  targetFOV: 60
 --- !u!4 &1103528144 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1244929540404850210, guid: 1f1a7509d361951408890bd46b973baa, type: 3}
