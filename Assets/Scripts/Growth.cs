@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class Growth : MonoBehaviour
 {
@@ -9,14 +10,19 @@ public class Growth : MonoBehaviour
     [SerializeField] float currentGrowth = 1;
     [SerializeField] float growFactor = 0.3f;
 
+    BoxCollider boxCollider;
+    SpriteRenderer spriteRenderer;
 
     void Start()
     {
+        boxCollider = GetComponent<BoxCollider>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
         float startSize = 1f;
         if (currentEvo == 3)
         {
             AnimationController.Instance.PlayEvo3(this.gameObject);
-            startSize = 4;
+            startSize = 3;
         }
         if (currentEvo == 2)
         {
@@ -29,6 +35,7 @@ public class Growth : MonoBehaviour
         }
         if (currentEvo == 0)
         {
+            startSize = 0.5f;
             int randomFeed = Random.Range(0, 2);
             if (randomFeed == 1)
             {
@@ -40,7 +47,8 @@ public class Growth : MonoBehaviour
                 AnimationController.Instance.PlayFeedB(this.gameObject);
             }
         }
-        transform.localScale = Vector3.one * startSize;
+        transform.localScale = new Vector3(startSize, startSize, startSize);
+        //UpdateBoxCollider();
     }
 
     public float GetCurrentEvo()
@@ -52,14 +60,14 @@ public class Growth : MonoBehaviour
     {
         transform.localScale += new Vector3(growFactor, growFactor, growFactor);
         currentGrowth = transform.localScale.x;
-
+        //UpdateBoxCollider();
         CheckEvo();
     }
 
-    public void CheckEvo()
+    private void CheckEvo()
     {
         // Evo2 growth = 2. Evo3 growth 5
-        if (currentGrowth >= 4)
+        if (currentGrowth >= 3)
         {
             currentEvo = 3;
         }

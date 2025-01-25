@@ -119,6 +119,7 @@ public class PlayerController : Subject
         if (collision.gameObject.CompareTag("Feed"))
         {
             GameManager.Instance.PlayerAte();
+            Destroy(collision.gameObject);
         }
     }
 

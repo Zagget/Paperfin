@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b75bfd13a5dd5f45a1c3b4fda1c128e, type: 3}
   m_Name: PlayerDie
   m_EditorClassIdentifier: 
-  sounds: []
+  sounds:
+  - name: death1
+    clip: {fileID: 8300000, guid: e003405e1b9916041921ae667cc8a416, type: 3}
+    loop: 0
+    mixer: {fileID: -5500313978763485721, guid: d0c2e97e0d038e241aa51d6bad2bff16, type: 2}

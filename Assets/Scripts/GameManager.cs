@@ -24,8 +24,6 @@ public class GameManager : Subject
 
     public void PlayerAte()
     {
-
-
         NotifyObservers(Action.Eat);
         amountFishAte++;
     }

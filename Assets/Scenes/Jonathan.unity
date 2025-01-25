@@ -303,6 +303,7 @@ GameObject:
   - component: {fileID: 303508354}
   - component: {fileID: 303508353}
   - component: {fileID: 303508352}
+  - component: {fileID: 303508360}
   - component: {fileID: 303508358}
   m_Layer: 0
   m_Name: Player
@@ -480,6 +481,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &303508360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303508350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95c97658a665a884eafb7d0e0c18a982, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteTransform: {fileID: 303508351}
 --- !u!1 &370743002
 GameObject:
   m_ObjectHideFlags: 0
@@ -1351,7 +1365,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mixer: {fileID: 24100000, guid: d0c2e97e0d038e241aa51d6bad2bff16, type: 2}
   player: 0.18
-  background: 0.029
+  background: 0.099
   misc: 1
   ambienceSound: {fileID: 11400000, guid: 066db2063561bec45b12d2d4ae078bd1, type: 2}
   kaleSound: {fileID: 11400000, guid: e8a3c0108f1f3b647bf1b4d81a5ab0de, type: 2}
