@@ -27,8 +27,14 @@ public class AudioEvents : MonoBehaviour, IObserver
 
         if (action == Action.Hide)
         {
-            SoundManager.Instance.PlayRandomSound(HidingSounds);
+            SoundManager.Instance.ToggleKaleOn();
+
             Debug.Log("play hide sound");
+        }
+
+        if (action == Action.Normal)
+        {
+            SoundManager.Instance.ToggleKaleOff();
         }
 
         if (action == Action.Dashing)
