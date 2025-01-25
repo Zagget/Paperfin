@@ -42,7 +42,7 @@ public class GameManager : Subject
         AudioSource audioSource = audioObject.AddComponent<AudioSource>();
         audioSource.spatialBlend = 1f;
 
-        SoundManager.Instance.PlayRandomSoundAtPoint(enemyEating, audioSource);
+        SoundManager.Instance.PlayRandomSoundAtLocation(enemyEating, audioSource);
         StartCoroutine(DestroyAudio(audioObject, audioSource));
     }
 
