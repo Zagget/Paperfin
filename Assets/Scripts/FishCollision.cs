@@ -6,6 +6,7 @@ public class FishCollision : Subject
 {
     Rigidbody rb;
     Growth grow;
+    GameManager manager;
 
     float currentGrow;
 
@@ -15,6 +16,7 @@ public class FishCollision : Subject
         grow = GetComponent<Growth>();
 
         currentGrow = grow.GetCurrentGrowth();
+        manager = FindFirstObjectByType<GameManager>();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -46,7 +48,7 @@ public class FishCollision : Subject
                 if (isPlayer)
                 {
                     Debug.Log("The player died");
-                    NotifyObservers(PlayerAction.Die);
+                    manager.PlayerDied();
                 }
 
                 Destroy(collision.gameObject);
@@ -57,7 +59,7 @@ public class FishCollision : Subject
                 if (isPlayer)
                 {
                     Debug.Log("The player ate");
-                    NotifyObservers(PlayerAction.Eat);
+                    manager.PlayerAte();
                 }
                 otherGrowth.Grow();
                 Destroy(this.gameObject);

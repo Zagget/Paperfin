@@ -5,7 +5,7 @@ public class CameraFollow : MonoBehaviour, IObserver
 {
     [SerializeField] float smoothTime = 0.25f;
     [SerializeField] Transform target;
-    [SerializeField] Subject playerSubject;
+    [SerializeField] Subject ManagerSubject;
 
     Vector3 offset = new Vector3(0f, 0f, -10f);
     Vector3 velocity = Vector3.zero;
@@ -25,6 +25,7 @@ public class CameraFollow : MonoBehaviour, IObserver
     {
         if (action == PlayerAction.Die)
         {
+            Debug.Log("Player died,");
             followplayer = false;
         }
 
@@ -41,11 +42,11 @@ public class CameraFollow : MonoBehaviour, IObserver
 
     public void OnEnable()
     {
-        playerSubject.AddObserver(this);
+        ManagerSubject.AddObserver(this);
     }
 
     public void OnDisable()
     {
-        playerSubject.RemoveObserver(this);
+        ManagerSubject.RemoveObserver(this);
     }
 }
