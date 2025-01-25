@@ -8,6 +8,9 @@ public class Growth : MonoBehaviour
     [SerializeField] float growFactor = 0.3f;
     [SerializeField] float currentGrowth = 1;
     [SerializeField] float startingGrowth = 1;
+    [SerializeField] float growthTime = 0.5f;
+
+    private IEnumerator growthRoutine;
 
     void Start()
     {
@@ -21,7 +24,20 @@ public class Growth : MonoBehaviour
 
     public void Grow()
     {
-        transform.localScale += new Vector3(growFactor, growFactor, growFactor);
-        currentGrowth = transform.localScale.x;
+        //transform.localScale += new Vector3(growFactor, growFactor, growFactor);
+        //currentGrowth = transform.localScale.x;
+
+        growthRoutine = growSlowly(growFactor);
+        StartCoroutine(growthRoutine);
+    }
+
+    private IEnumerator growSlowly(float growthAmount)
+    {
+        for (float t = 0f; t <= growthTime; t += Time.deltaTime)
+        {
+            currentGrowth += Time.deltaTime * growthAmount / growthTime;
+            transform.localScale = new Vector3(Mathf.Sqrt(currentGrowth), Mathf.Sqrt(currentGrowth), Mathf.Sqrt(currentGrowth));
+            yield return null;
+        }
     }
 }
