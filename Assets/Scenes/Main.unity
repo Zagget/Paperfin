@@ -460,6 +460,7 @@ MonoBehaviour:
   smallEnemies: []
   mediumEnemies: []
   largeEnemies: []
+  PlayerPos: {fileID: 1299444475}
 --- !u!4 &1185313662
 Transform:
   m_ObjectHideFlags: 0

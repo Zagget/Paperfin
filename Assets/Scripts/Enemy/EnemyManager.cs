@@ -35,13 +35,13 @@ public class EnemyManager : MonoBehaviour
         switch (direction)
         {
             case 0:
-                return new Vector2(x - 6, y);
+                return new Vector2(x - 8, y);
             case 1:
-                return new Vector2(x + 6, y);
+                return new Vector2(x + 8, y);
             case 2:
-                return new Vector2(x, y + 6);
+                return new Vector2(x, y + 8);
             case 3:
-                return new Vector2(x, y - 6);
+                return new Vector2(x, y - 8);
             default:
                 return new Vector2(x, y);
         }
