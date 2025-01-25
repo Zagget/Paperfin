@@ -1,25 +1,52 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Growth : MonoBehaviour
 {
+    [Header("Evolution")]
+    [SerializeField] float currentEvo = 1;
+
     [Header("Grow")]
-    [SerializeField] float growFactor = 0.3f;
     [SerializeField] float currentGrowth = 1;
+    [SerializeField] float growFactor = 0.3f;
     [SerializeField] float startingGrowth = 1;
     [SerializeField] float growthTime = 0.5f;
 
     private IEnumerator growthRoutine;
 
+
     void Start()
     {
+        if (currentEvo == 3)
+        {
+            AnimationController.Instance.PlayEvo3(this.gameObject);
+        }
+        if (currentEvo == 2)
+        {
+            AnimationController.Instance.PlayEvo2(this.gameObject);
+        }
+        if (currentEvo == 1)
+        {
+            AnimationController.Instance.PlayEvo1(this.gameObject);
+        }
+        if (currentEvo == 0)
+        {
+            int randomFeed = Random.Range(0, 2);
+            if (randomFeed == 1)
+            {
+                AnimationController.Instance.PlayFeedA(this.gameObject);
+
+            }
+            else
+            {
+                AnimationController.Instance.PlayFeedB(this.gameObject);
+            }
+        }
         transform.localScale = Vector3.one * startingGrowth;
     }
 
-    public float GetCurrentGrowth()
+    public float GetCurrentEvo()
     {
-        return currentGrowth;
+        return currentEvo;
     }
 
     public void Grow()
@@ -38,6 +65,20 @@ public class Growth : MonoBehaviour
             currentGrowth += Time.deltaTime * growthAmount / growthTime;
             transform.localScale = new Vector3(Mathf.Sqrt(currentGrowth), Mathf.Sqrt(currentGrowth), Mathf.Sqrt(currentGrowth));
             yield return null;
+
+        CheckEvo();
+    }
+
+    public void CheckEvo()
+    {
+        // Evo2 growth = 2. Evo3 growth 5
+        if (currentGrowth >= 5)
+        {
+            currentEvo = 3;
+        }
+        if (currentGrowth >= 2)
+        {
+            currentEvo = 2;
         }
     }
 }

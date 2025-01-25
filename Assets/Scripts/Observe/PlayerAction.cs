@@ -6,5 +6,6 @@ public enum Action
     Die,
     Hide,
     Dashing,
+    Evolve,
     None
 }
