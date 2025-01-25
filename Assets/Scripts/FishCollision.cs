@@ -15,7 +15,7 @@ public class FishCollision : Subject
         rb = GetComponent<Rigidbody>();
         grow = GetComponent<Growth>();
 
-        currentGrow = grow.GetCurrentGrowth();
+        currentGrow = grow.GetCurrentEvo();
         manager = FindFirstObjectByType<GameManager>();
     }
 
@@ -38,8 +38,8 @@ public class FishCollision : Subject
                 isPlayer = true;
             }
 
-            currentGrow = grow.GetCurrentGrowth();
-            float otherGrow = otherGrowth.GetCurrentGrowth();
+            currentGrow = grow.GetCurrentEvo();
+            float otherGrow = otherGrowth.GetCurrentEvo();
 
             if (currentGrow > otherGrow)
             {

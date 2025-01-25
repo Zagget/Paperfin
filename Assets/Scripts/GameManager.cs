@@ -34,6 +34,12 @@ public class GameManager : Subject
         NotifyObservers(Action.Die);
     }
 
+    public void FishEvolve(GameObject fish)
+    {
+        NotifyObservers(Action.Evolve);
+
+    }
+
 
     public void EnemyAte(Vector3 enemyPos)
     {
