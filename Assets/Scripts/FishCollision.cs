@@ -8,14 +8,14 @@ public class FishCollision : Subject
     Growth grow;
     GameManager manager;
 
-    float currentGrow;
+    float fishEvo;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         grow = GetComponent<Growth>();
 
-        currentGrow = grow.GetCurrentEvo();
+        fishEvo = grow.GetCurrentEvo();
         manager = FindFirstObjectByType<GameManager>();
     }
 
@@ -38,28 +38,29 @@ public class FishCollision : Subject
                 isPlayer = true;
             }
 
-            currentGrow = grow.GetCurrentEvo();
-            float otherGrow = otherGrowth.GetCurrentEvo();
+            fishEvo = grow.GetCurrentEvo();
+            float collisionEvo = otherGrowth.GetCurrentEvo();
 
-            if (currentGrow > otherGrow)
+            if (isPlayer)
             {
-                grow.Grow();
-
-                if (isPlayer)
+                if (fishEvo >= collisionEvo)
                 {
                     Debug.Log("The player died");
                     manager.PlayerDied();
+                    Destroy(collision.gameObject);
+                    return;
                 }
-
+                Debug.Log("The player ate");
+                manager.PlayerAte();
+                return;
+            }
+            if (fishEvo > collisionEvo)
+            {
+                grow.Grow();
                 Destroy(collision.gameObject);
             }
             else
             {
-                if (isPlayer)
-                {
-                    Debug.Log("The player ate");
-                    manager.PlayerAte();
-                }
                 otherGrowth.Grow();
                 manager.EnemyAte(this.gameObject.transform.position);
                 Destroy(this.gameObject);

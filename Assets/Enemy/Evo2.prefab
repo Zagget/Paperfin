@@ -72,8 +72,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentEvo: 2
   currentGrowth: 1
-  growFactor: 0.3
-  startingGrowth: 1
+  growFactor: 0.25
 --- !u!114 &325272022153641653
 MonoBehaviour:
   m_ObjectHideFlags: 0

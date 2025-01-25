@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 9189029154538632405}
   m_Layer: 0
   m_Name: Feed
-  m_TagString: Fish
+  m_TagString: Feed
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3548032279972608157}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.86, y: 7.74, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -84,8 +84,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentEvo: 0
   currentGrowth: 1
-  growFactor: 0.3
-  startingGrowth: 1
+  growFactor: 0
 --- !u!54 &3362531246008090028
 Rigidbody:
   m_ObjectHideFlags: 0
