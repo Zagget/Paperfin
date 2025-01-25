@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 
 public class PlayerAudio : MonoBehaviour, IObserver
@@ -5,6 +6,8 @@ public class PlayerAudio : MonoBehaviour, IObserver
     [SerializeField] Subject playerSubject;
     [SerializeField] SoundData DeathSounds;
     [SerializeField] SoundData HidingSounds;
+
+    [SerializeField] SoundData DashShounds;
 
 
     public void OnNotify(PlayerAction action)
@@ -19,6 +22,11 @@ public class PlayerAudio : MonoBehaviour, IObserver
         {
             SoundManager.Instance.PlayRandomSound(HidingSounds);
             Debug.Log("play hide sound");
+        }
+
+        if (action == PlayerAction.Dashing)
+        {
+            SoundManager.Instance.PlayRandomSound(DashShounds);
         }
     }
 

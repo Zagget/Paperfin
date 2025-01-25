@@ -4,5 +4,6 @@ public enum PlayerAction
     Eat,
     Die,
     Hide,
+    Dashing,
     None
 }

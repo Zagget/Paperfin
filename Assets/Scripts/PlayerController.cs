@@ -69,7 +69,7 @@ public class PlayerController : Subject
         // Check if dash is available and the player presses the dash button
         if (Time.time - lastDashTime >= dashCooldown && Input.GetKeyDown(KeyCode.Space) && !isDashing)
         {
-            Debug.Log("Started dashing");
+            NotifyObservers(PlayerAction.Dashing);
             StartDash();
         }
 
@@ -95,7 +95,7 @@ public class PlayerController : Subject
         if (dashDirection.magnitude == 0) dashDirection = transform.right;
 
         // Apply dash speed immediately
-        rb.velocity = dashDirection * dashSpeed; // Apply dash speed to the Rigidbody
+        rb.velocity = dashDirection * dashSpeed;
     }
 
     void StopDash()

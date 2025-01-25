@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b75bfd13a5dd5f45a1c3b4fda1c128e, type: 3}
+  m_Name: Dashing
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: dash1
+    clip: {fileID: 8300000, guid: f09c5b8368b23b44193cf3c5e314f705, type: 3}
+    loop: 0
+    mixer: {fileID: -5500313978763485721, guid: d0c2e97e0d038e241aa51d6bad2bff16, type: 2}
+  - name: dash2
+    clip: {fileID: 8300000, guid: c1946961aa87d664da974a6e6453d039, type: 3}
+    loop: 0
+    mixer: {fileID: -5500313978763485721, guid: d0c2e97e0d038e241aa51d6bad2bff16, type: 2}
+  - name: dash3
+    clip: {fileID: 8300000, guid: fd3516dee4e88284e9ca29bc56545021, type: 3}
+    loop: 0
+    mixer: {fileID: -5500313978763485721, guid: d0c2e97e0d038e241aa51d6bad2bff16, type: 2}
