@@ -1,7 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
 
 public class GameManager : Subject
 {
@@ -9,6 +7,7 @@ public class GameManager : Subject
     public static GameManager Instance { get { return instance; } }
 
     [SerializeField] int amountFishAte = 0;
+    [SerializeField] SoundData enemyEating;
 
     private void Awake()
     {
@@ -23,14 +22,36 @@ public class GameManager : Subject
         }
     }
 
+
     public void PlayerAte()
     {
-        NotifyObservers(PlayerAction.Eat);
+        NotifyObservers(Action.Eat);
         amountFishAte++;
     }
 
     public void PlayerDied()
     {
-        NotifyObservers(PlayerAction.Die);
+        NotifyObservers(Action.Die);
+    }
+
+
+    public void EnemyAte(Vector3 enemyPos)
+    {
+        GameObject audioObject = new GameObject("AudioSourceEnemyAte");
+        audioObject.transform.position = enemyPos;
+        AudioSource audioSource = audioObject.AddComponent<AudioSource>();
+        audioSource.spatialBlend = 1f;
+
+        SoundManager.Instance.PlayRandomSoundAtPoint(enemyEating, audioSource);
+        StartCoroutine(DestroyAudio(audioObject, audioSource));
+    }
+
+    private IEnumerator DestroyAudio(GameObject g, AudioSource source)
+    {
+        while (source.isPlaying)
+        {
+            yield return null;  // Wait for the next frame
+        }
+        Destroy(g);
     }
 }

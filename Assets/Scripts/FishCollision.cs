@@ -52,7 +52,6 @@ public class FishCollision : Subject
                 }
 
                 Destroy(collision.gameObject);
-
             }
             else
             {
@@ -62,6 +61,7 @@ public class FishCollision : Subject
                     manager.PlayerAte();
                 }
                 otherGrowth.Grow();
+                manager.EnemyAte(this.gameObject.transform.position);
                 Destroy(this.gameObject);
             }
         }
