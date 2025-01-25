@@ -9,7 +9,7 @@ public class AudioEvents : MonoBehaviour, IObserver
     [SerializeField] SoundData HidingSounds;
     [SerializeField] SoundData DashSounds;
     [SerializeField] SoundData EatingSounds;
-
+    [SerializeField] SoundData backgroundSound;
 
     public void OnNotify(Action action)
     {

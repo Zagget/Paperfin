@@ -1384,6 +1384,7 @@ MonoBehaviour:
   HidingSounds: {fileID: 11400000, guid: 471360c02c15bcb418c4062eb8b5dbb5, type: 2}
   DashSounds: {fileID: 11400000, guid: f8bedc1c117574f4da3d01b9b33f40c6, type: 2}
   EatingSounds: {fileID: 11400000, guid: 8d0d6956345160841b36e64597fdd2d3, type: 2}
+  backgroundSound: {fileID: 0}
 --- !u!4 &1466101190 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3563187428026559049, guid: f57f631446bc433419c6ce4ac02abb0f, type: 3}
@@ -1778,8 +1779,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mixer: {fileID: 24100000, guid: d0c2e97e0d038e241aa51d6bad2bff16, type: 2}
   player: 0.18
-  background: 1
+  background: 0.029
   misc: 1
+  ambienceSound: {fileID: 11400000, guid: 066db2063561bec45b12d2d4ae078bd1, type: 2}
 --- !u!4 &2005464089
 Transform:
   m_ObjectHideFlags: 0

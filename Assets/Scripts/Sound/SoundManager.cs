@@ -8,6 +8,7 @@ public class SoundManager : MonoBehaviour
     private static SoundManager instance;
     public static SoundManager Instance { get { return instance; } }
 
+    [Header("Volume Control")]
     [SerializeField] AudioMixer mixer;
     [SerializeField]
     [Range(0.0001f, 1f)]
@@ -21,6 +22,11 @@ public class SoundManager : MonoBehaviour
     [Range(0.0001f, 1f)]
     public float misc = 1.0f;
 
+    [Header("Ambient")]
+    [SerializeField] SoundData ambienceSound;
+
+    AudioSource ambienceSource
+    ;
     // Audiosources so no sound gets cut off.
     private int currentAudioSourceIndex = 0;
     private List<AudioSource> audioSources;
@@ -36,6 +42,8 @@ public class SoundManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+
+        ambienceSource = gameObject.AddComponent<AudioSource>();
     }
 
     void Start()
@@ -48,6 +56,7 @@ public class SoundManager : MonoBehaviour
         }
 
         SetAudioMixerVolume();
+        PlayLoop(ambienceSound, "Ambience", ambienceSource);
     }
 
     private void SetAudioMixerVolume()
@@ -73,7 +82,7 @@ public class SoundManager : MonoBehaviour
         PlayClip(randomEntry.clip, randomEntry.loop, randomEntry.mixer);
     }
 
-    public void PlayRandomSoundAtPoint(SoundData soundData, AudioSource source)
+    public void PlayRandomSoundAtLocation(SoundData soundData, AudioSource source)
     {
         bool empty = CheckIfSoundDataEmpty(soundData);
         if (empty)
@@ -104,6 +113,28 @@ public class SoundManager : MonoBehaviour
         // Move to the next audio source in the list
         currentAudioSourceIndex = (currentAudioSourceIndex + 1) % audioSources.Count;
         Debug.Log($"SOUND: Played {clip}");
+    }
+
+    public void PlayLoop(SoundData soundData, string soundName, AudioSource targetSource)
+    {
+        bool empty = CheckIfSoundDataEmpty(soundData);
+        if (empty)
+        {
+            return;
+        }
+
+        SoundData.SoundEntry entry = System.Array.Find(soundData.sounds, s => s.name == soundName);
+        bool exist = CheckIfSoundExist(entry, soundName);
+        if (!exist)
+        {
+            return;
+        }
+
+        // Set the target audio source settings
+        targetSource.clip = entry.clip;
+        targetSource.loop = entry.loop;
+        targetSource.outputAudioMixerGroup = entry.mixer;
+        targetSource.Play();
     }
 
     private bool CheckIfSoundDataEmpty(SoundData soundData)
