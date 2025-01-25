@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4753642699315159440}
   m_Layer: 0
   m_Name: kale_05_0
-  m_TagString: Untagged
+  m_TagString: SeaWeed
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

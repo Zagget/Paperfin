@@ -24,9 +24,14 @@ public class SoundManager : MonoBehaviour
 
     [Header("Ambient")]
     [SerializeField] SoundData ambienceSound;
+    [Header("Kale")]
+    [SerializeField] SoundData kaleSound;
 
-    AudioSource ambienceSource
-    ;
+    AudioSource ambienceSource;
+    AudioSource kaleSource;
+
+    bool kaleOn;
+
     // Audiosources so no sound gets cut off.
     private int currentAudioSourceIndex = 0;
     private List<AudioSource> audioSources;
@@ -44,6 +49,7 @@ public class SoundManager : MonoBehaviour
         }
 
         ambienceSource = gameObject.AddComponent<AudioSource>();
+        kaleSource = gameObject.AddComponent<AudioSource>();
     }
 
     void Start()
@@ -113,6 +119,24 @@ public class SoundManager : MonoBehaviour
         // Move to the next audio source in the list
         currentAudioSourceIndex = (currentAudioSourceIndex + 1) % audioSources.Count;
         Debug.Log($"SOUND: Played {clip}");
+    }
+
+    public void ToggleKaleOn()
+    {
+        if (!kaleOn)
+        {
+            PlayLoop(kaleSound, "kale", kaleSource);
+            kaleOn = true;
+        }
+    }
+
+    public void ToggleKaleOff()
+    {
+        if (kaleOn)
+        {
+            kaleSource.Stop();
+            kaleOn = false;
+        }
     }
 
     public void PlayLoop(SoundData soundData, string soundName, AudioSource targetSource)
