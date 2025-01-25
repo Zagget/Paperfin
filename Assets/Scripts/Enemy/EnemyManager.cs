@@ -11,15 +11,6 @@ public class EnemyManager : MonoBehaviour
 
     [SerializeField] Transform PlayerPos;
 
-    float cameraWidth;
-    float cameraHeight;
-
-    void Start()
-    {
-        cameraHeight = Camera.main.orthographicSize * 2f;
-        cameraWidth = cameraHeight * 2f;
-    }
-
     private void EnemySpawner()
     {
 
