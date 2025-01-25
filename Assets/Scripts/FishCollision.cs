@@ -30,6 +30,12 @@ public class FishCollision : Subject
                 return;
             }
 
+            bool isPlayer = false;
+            if (collision.gameObject.GetComponent<PlayerController>() != null)
+            {
+                isPlayer = true;
+            }
+
             currentGrow = grow.GetCurrentGrowth();
             float otherGrow = otherGrowth.GetCurrentGrowth();
 
@@ -37,7 +43,7 @@ public class FishCollision : Subject
             {
                 grow.Grow();
 
-                if (collision.gameObject.GetComponent<PlayerController>() != null)
+                if (isPlayer)
                 {
                     Debug.Log("The player died");
                     NotifyObservers(PlayerAction.Die);
@@ -48,6 +54,11 @@ public class FishCollision : Subject
             }
             else
             {
+                if (isPlayer)
+                {
+                    Debug.Log("The player ate");
+                    NotifyObservers(PlayerAction.Eat);
+                }
                 otherGrowth.Grow();
                 Destroy(this.gameObject);
             }
