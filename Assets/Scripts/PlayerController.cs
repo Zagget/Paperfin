@@ -4,9 +4,20 @@ using UnityEngine;
 public class PlayerController : Subject
 {
     [Header("Movement")]
-    public float maxSpeed = 8;
-    public float acceleration = 5;
-    public float deceleration = 20;
+    [SerializeField] float maxSpeed = 8;
+    [SerializeField] float acceleration = 5;
+    [SerializeField] float deceleration = 20;
+    [SerializeField] float dashPower = 5;
+
+    [Header("Dash")]
+    [SerializeField] float dashCooldown = 0.5f;
+    [SerializeField] float dashDuration = 1.25f;
+    [SerializeField] float dashSpeed = 8f;
+
+    float dashTime;
+
+    float lastDashTime = 0;
+    bool isDashing = false;
 
     Rigidbody rb;
     Vector2 velocity;
@@ -19,10 +30,13 @@ public class PlayerController : Subject
     void Update()
     {
         Movement();
+        Dash();
     }
 
     private void Movement()
     {
+        if (isDashing) return;
+
         Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
         if (input.magnitude > 0)
@@ -50,6 +64,48 @@ public class PlayerController : Subject
         rb.velocity = new Vector2(velocity.x, velocity.y);
     }
 
+    private void Dash()
+    {
+        // Check if dash is available and the player presses the dash button
+        if (Time.time - lastDashTime >= dashCooldown && Input.GetKeyDown(KeyCode.Space) && !isDashing)
+        {
+            Debug.Log("Started dashing");
+            StartDash();
+        }
+
+        if (isDashing)
+        {
+            dashTime += Time.deltaTime;
+
+            if (dashTime >= dashDuration)
+            {
+                StopDash();
+            }
+        }
+    }
+
+    void StartDash()
+    {
+        isDashing = true;
+        dashTime = 0f;
+
+        lastDashTime = Time.time;
+
+        Vector2 dashDirection = velocity.normalized;
+        if (dashDirection.magnitude == 0) dashDirection = transform.right;
+
+        // Apply dash speed immediately
+        rb.velocity = dashDirection * dashSpeed; // Apply dash speed to the Rigidbody
+    }
+
+    void StopDash()
+    {
+        // Stop the dash and return to normal movement
+        isDashing = false;
+        velocity = rb.velocity.normalized * maxSpeed;
+    }
+
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("SeaWeed"))
@@ -57,11 +113,6 @@ public class PlayerController : Subject
             Debug.Log("Player is hiding");
             NotifyObservers(PlayerAction.Hide);
         }
-
-        // if (other.CompareTag("enemy"))
-        // {
-        //     NotifyObservers(PlayerAction.Eat);
-        // }
     }
 
     private void OnTriggerExit(Collider other)
