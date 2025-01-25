@@ -114,6 +114,14 @@ public class PlayerController : Subject
         }
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Feed"))
+        {
+            GameManager.Instance.PlayerAte();
+        }
+    }
+
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("SeaWeed"))

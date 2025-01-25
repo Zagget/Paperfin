@@ -16,13 +16,16 @@ public class Growth : MonoBehaviour
 
     void Start()
     {
+        float startSize = 1f;
         if (currentEvo == 3)
         {
             AnimationController.Instance.PlayEvo3(this.gameObject);
+            startSize = 4;
         }
         if (currentEvo == 2)
         {
             AnimationController.Instance.PlayEvo2(this.gameObject);
+            startSize = 2;
         }
         if (currentEvo == 1)
         {
@@ -41,7 +44,7 @@ public class Growth : MonoBehaviour
                 AnimationController.Instance.PlayFeedB(this.gameObject);
             }
         }
-        transform.localScale = Vector3.one * startingGrowth;
+        transform.localScale = Vector3.one * startSize;
     }
 
     public float GetCurrentEvo()
@@ -72,7 +75,7 @@ public class Growth : MonoBehaviour
     public void CheckEvo()
     {
         // Evo2 growth = 2. Evo3 growth 5
-        if (currentGrowth >= 5)
+        if (currentGrowth >= 4)
         {
             currentEvo = 3;
         }
