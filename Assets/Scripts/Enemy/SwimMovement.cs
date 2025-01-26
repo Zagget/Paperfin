@@ -69,7 +69,7 @@ public class SwimMovement : MonoBehaviour
                 rb.velocity = speed * transform.right;
             }
             timer -= Time.deltaTime;
-            rb.velocity -= Time.deltaTime * rb.velocity * deceleration;
         }
+        rb.velocity -= Time.deltaTime * rb.velocity * deceleration;
     }
 }
