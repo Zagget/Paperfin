@@ -8,12 +8,12 @@ public class aggresiveMovement : MonoBehaviour
     [SerializeField] float deceleration;
     private float prevT = 1f;
 
-    Rigidbody rb;
+    Rigidbody2D rb;
     EnemyProperties ep;
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody2D>();
         ep = GetComponent<EnemyProperties>();
     }
 
@@ -22,16 +22,16 @@ public class aggresiveMovement : MonoBehaviour
     {
         if (!(ep.target == null) && ep.target.GetComponent<EnvironmentEffects>().isVisible)
         {
-            Rigidbody erb = ep.target.GetComponent<Rigidbody>();
-            Vector3 deltaP = rb.position - erb.position;
-            Vector3 deltaV = rb.velocity - erb.velocity;
+            Rigidbody2D erb = ep.target.GetComponent<Rigidbody2D>();
+            Vector2 deltaP = rb.position - erb.position;
+            Vector2 deltaV = rb.velocity - erb.velocity;
 
             float gamma = deceleration;
             float t = prevT;
-            Vector3 acc = Vector3.zero;
+            Vector2 acc = Vector2.zero;
             for (int ind = 0; ind < 10; ind++)
             {
-                Vector3 relAccFactor = (-gamma * deltaP - (1 - Mathf.Exp(-gamma * t)) * deltaV) / (gamma * t - (1 - Mathf.Exp(-gamma * t)));
+                Vector2 relAccFactor = (-gamma * deltaP - (1 - Mathf.Exp(-gamma * t)) * deltaV) / (gamma * t - (1 - Mathf.Exp(-gamma * t)));
                 acc = gamma * (relAccFactor + erb.velocity);
                 if (acc.magnitude < maxAcc)
                 {
@@ -41,8 +41,12 @@ public class aggresiveMovement : MonoBehaviour
                 {
                     t += Time.deltaTime;
                 }
+                Debug.Log("Acc: " + acc.magnitude);
+                prevT = t;
             }
-            rb.velocity += Time.deltaTime * (acc - deceleration * rb.velocity);
+            rb.velocity += Time.deltaTime * (acc.normalized * maxAcc - deceleration * rb.velocity);
+
+            transform.LookAt(transform.position + Vector3.forward, Vector3.Cross(rb.velocity, Vector3.forward));
         }
     }
 }

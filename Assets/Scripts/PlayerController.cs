@@ -61,6 +61,8 @@ public class PlayerController : Subject
         velocity = Vector2.ClampMagnitude(velocity, maxSpeed);
 
         rb.velocity = new Vector2(velocity.x, velocity.y);
+
+        transform.LookAt(transform.position + Vector3.forward, Vector3.Cross(rb.velocity, Vector3.forward));
     }
 
     private void Dash()

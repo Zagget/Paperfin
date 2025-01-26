@@ -7,19 +7,19 @@ public class CruiseMovement : MonoBehaviour
     [SerializeField] float maxAcc;
     [SerializeField] float accVariation;
     [SerializeField] float deceleration;
-    private Vector3 prevAcc = Vector3.zero;
+    private Vector2 prevAcc = Vector2.zero;
 
-    Rigidbody rb;
+    Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        prevAcc += Vector3.ClampMagnitude((Vector3)(Mathf.Sqrt(Time.deltaTime) * Random.insideUnitCircle) * accVariation, maxAcc);
+        prevAcc += Vector2.ClampMagnitude((Mathf.Sqrt(Time.deltaTime) * Random.insideUnitCircle) * accVariation, maxAcc);
         rb.velocity += Time.deltaTime * prevAcc - Time.deltaTime * rb.velocity * deceleration;
     }
 }

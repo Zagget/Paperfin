@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class Growth : MonoBehaviour
 {
@@ -69,7 +70,8 @@ public class Growth : MonoBehaviour
             transform.localScale = new Vector3(Mathf.Sqrt(currentGrowth), Mathf.Sqrt(currentGrowth), Mathf.Sqrt(currentGrowth));
             yield return null;
 
-        CheckEvo();
+            CheckEvo();
+        }
     }
 
     public void CheckEvo()

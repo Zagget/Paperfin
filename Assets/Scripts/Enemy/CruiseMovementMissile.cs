@@ -10,12 +10,12 @@ public class CruiseMovementMissile : MonoBehaviour
     [SerializeField] float turnPullBack;
     private float prevTurn = 0;
 
-    Rigidbody rb;
+    Rigidbody2D rb;
     EnemyProperties ep;
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody2D>();
         ep = GetComponent<EnemyProperties>();
     }
 

@@ -9,14 +9,14 @@ public class SwimMovement : MonoBehaviour
     [SerializeField] float strokeTime;
     [SerializeField] float deceleration;
 
-    Rigidbody rb;
+    Rigidbody2D rb;
     EnemyProperties ep;
     private float timer = 0f;
 
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody2D>();
         ep = GetComponent<EnemyProperties>();
     }
 
@@ -25,18 +25,18 @@ public class SwimMovement : MonoBehaviour
     {
         if (!(ep.target == null) && ep.target.GetComponent<EnvironmentEffects>().isVisible)
         {
-            Rigidbody erb = ep.target.GetComponent<Rigidbody>();
+            Rigidbody2D erb = ep.target.GetComponent<Rigidbody2D>();
             Vector3 predictedTargetPosition = erb.position + (erb.position - rb.position).magnitude * erb.velocity / speed;
             Vector3 rightVector = Vector3.Cross(Vector3.forward, transform.right);
 
             float angularVelocity = 360f / (2f * Mathf.PI) * turnSpeed;
             //if (Vector3.Dot(rightVector, erb.position - rb.position) > ep.mouthWidth/2)
-            if (Vector3.Dot(rightVector, predictedTargetPosition - rb.position) > ep.mouthWidth / 2)
+            if (Vector3.Dot(rightVector, predictedTargetPosition - (Vector3) rb.position) > ep.mouthWidth / 2)
             {
                 transform.Rotate(Vector3.forward, Time.deltaTime * angularVelocity);
             }
             //else if (Vector3.Dot(rightVector, erb.position - transform.position) < -ep.mouthWidth/2)
-            else if (Vector3.Dot(rightVector, predictedTargetPosition - rb.position) < -ep.mouthWidth / 2)
+            else if (Vector3.Dot(rightVector, predictedTargetPosition - (Vector3) rb.position) < -ep.mouthWidth / 2)
             {
                 transform.Rotate(Vector3.forward, -Time.deltaTime * angularVelocity);
             }
