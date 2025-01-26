@@ -8,7 +8,7 @@ public class Growth : MonoBehaviour
     [SerializeField] public int currentArt = 1;
 
     [Header("Grow")]
-    [SerializeField] float currentGrowth = 1;
+    [SerializeField] public float currentGrowth = 1;
     [SerializeField] float growFactor = 0.1f;
     [SerializeField] float growthTime = 0.5f;
 
@@ -23,16 +23,50 @@ public class Growth : MonoBehaviour
         {
             AnimationController.Instance.PlayC01(this.gameObject);
             currentGrowth = 4.7f;
+
+            if (currentArt == 2)
+            {
+                AnimationController.Instance.PlayC02(this.gameObject);
+                currentGrowth = 5f;
+            }
+            if (currentArt == 3)
+            {
+                AnimationController.Instance.PlayC03(this.gameObject);
+                currentGrowth = 6f;
+            }
+
         }
         if (currentEvo == 2)
         {
             AnimationController.Instance.PlayB01(this.gameObject);
             currentGrowth = 2.7f;
+
+            if (currentArt == 2)
+            {
+                AnimationController.Instance.PlayB02(this.gameObject);
+                currentGrowth = 3.2f;
+            }
+            if (currentArt == 3)
+            {
+                AnimationController.Instance.PlayB03(this.gameObject);
+                currentGrowth = 4;
+            }
         }
         if (currentEvo == 1)
         {
             currentGrowth = 1f;
             AnimationController.Instance.PlayA01(this.gameObject);
+
+            if (currentArt == 2)
+            {
+                AnimationController.Instance.PlayA02(this.gameObject);
+                currentGrowth = 1.4f;
+            }
+            if (currentArt == 3)
+            {
+                AnimationController.Instance.PlayA03(this.gameObject);
+                currentGrowth = 2;
+            }
         }
         if (currentEvo == 0)
         {
@@ -111,7 +145,7 @@ public class Growth : MonoBehaviour
                 AnimationController.Instance.PlayC03(this.gameObject);
                 return;
             }
-            if (currentGrowth >= 5f)
+            if (currentGrowth >= 5.2f)
             {
                 currentArt = 2;
                 AnimationController.Instance.PlayC02(this.gameObject);
