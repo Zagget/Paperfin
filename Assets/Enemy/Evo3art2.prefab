@@ -15,6 +15,9 @@ GameObject:
   - component: {fileID: 9189029154538632405}
   - component: {fileID: 9015874263459438432}
   - component: {fileID: -648083424763667850}
+  - component: {fileID: -8201571854402517160}
+  - component: {fileID: -4513344084637482408}
+  - component: {fileID: 4032463068803329498}
   m_Layer: 0
   m_Name: Evo3art2
   m_TagString: Fish
@@ -213,3 +216,49 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.0001, y: 0.0001}
   m_EdgeRadius: 0
+--- !u!114 &-8201571854402517160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3548032279972608157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1acd11f7e4dbe48e6b015cd75d156f6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  mouthWidth: 0.5
+  sightScale: 20
+  behaviour: 0
+--- !u!114 &-4513344084637482408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3548032279972608157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5f95d3b441b94cbe96e02251692434a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  turnSpeed: 2
+  strokeTime: 1
+  deceleration: 0.2
+--- !u!114 &4032463068803329498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3548032279972608157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f4318c92375e4916b739221750e05a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerSubject: {fileID: 0}
+  isVisible: 1

@@ -28,7 +28,7 @@ public class EnemyProperties : MonoBehaviour
             if (raycastHit)
             {
                 string colliderTag = raycastHit.collider.tag;
-                //Debug.Log(raycastHit.collider.gameObject.name);
+                Debug.Log(raycastHit.collider.gameObject.name);
                 if ((colliderTag == "Fish" || colliderTag == "Feed") && raycastHit.rigidbody.GetComponent<EnvironmentEffects>().isVisible)
                 {
                     Growth hitGrowth = raycastHit.rigidbody.GetComponent<Growth>();

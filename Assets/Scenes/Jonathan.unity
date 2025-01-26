@@ -483,7 +483,7 @@ Transform:
   m_GameObject: {fileID: 303508350}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.3, y: 1.8, z: 0}
+  m_LocalPosition: {x: -12.5, y: -5.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -927,6 +927,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1406ac25f317aab4bb5114bc1f8f2776, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
   enemies: []
   PlayerPos: {fileID: 303508351}
 --- !u!1001 &605636899
@@ -1772,7 +1773,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1078189769}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c5f95d3b441b94cbe96e02251692434a, type: 3}
   m_Name: 
@@ -1797,6 +1798,36 @@ MonoBehaviour:
   mouthWidth: 0.5
   sightScale: 20
   behaviour: 0
+--- !u!114 &1078189787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1078189769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3745c9b1009234aa2813dfa09ba29d55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 4
+  maxTurn: 1
+  turnVariation: 1
+  turnPullBack: 1
+--- !u!114 &1078189788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1078189769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b4e3b8f8154048e186f946354cdbefe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 4
+  turnRadius: 8
 --- !u!1001 &1106091146
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2701,11 +2732,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3255177048625674283, guid: df6254a9638a4a745b6801cab297a9de, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.41
+      value: -15.29
       objectReference: {fileID: 0}
     - target: {fileID: 3255177048625674283, guid: df6254a9638a4a745b6801cab297a9de, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -9.57
+      value: -0.45
       objectReference: {fileID: 0}
     - target: {fileID: 3255177048625674283, guid: df6254a9638a4a745b6801cab297a9de, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2756,6 +2787,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3548032279972608157, guid: df6254a9638a4a745b6801cab297a9de, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1078189785}
+    - targetCorrespondingSourceObject: {fileID: 3548032279972608157, guid: df6254a9638a4a745b6801cab297a9de, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1078189788}
+    - targetCorrespondingSourceObject: {fileID: 3548032279972608157, guid: df6254a9638a4a745b6801cab297a9de, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1078189787}
   m_SourcePrefab: {fileID: 100100000, guid: df6254a9638a4a745b6801cab297a9de, type: 3}
 --- !u!1 &1628938246
 GameObject:
