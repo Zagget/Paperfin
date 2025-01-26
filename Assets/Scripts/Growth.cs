@@ -5,11 +5,11 @@ using Unity.VisualScripting;
 public class Growth : MonoBehaviour
 {
     [Header("Evolution")]
-    [SerializeField] float currentEvo = 1;
-    [SerializeField] float currentArt = 1;
+    [SerializeField] public int currentEvo = 1;
+    [SerializeField] public int currentArt = 1;
 
     [Header("Grow")]
-    [SerializeField] float currentGrowth = 1;
+    [SerializeField] public float currentGrowth = 1;
     [SerializeField] float growFactor = 0.3f;
     [SerializeField] float startingGrowth = 1;
     [SerializeField] float growthTime = 0.5f;

@@ -22,7 +22,7 @@ public class CruiseMovementMissile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!ep.isFollowing)
+        if (ep.behaviour == Behaviour.NEUTRAL)
         {
             prevTurn += Mathf.Clamp(Mathf.Sqrt(Time.deltaTime) * Random.Range(-turnVariation, turnVariation) - Time.deltaTime * prevTurn * turnPullBack, -maxTurn, maxTurn);
             transform.Rotate(Vector3.forward, -Time.deltaTime * prevTurn * 360 / (2 * Mathf.PI));

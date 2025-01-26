@@ -6,20 +6,73 @@ public class EnemyProperties : MonoBehaviour
 {
     [SerializeField] public GameObject target;
     [SerializeField] public float mouthWidth;
-    public bool isFollowing;
+    [SerializeField] float sightScale;
+    public Behaviour behaviour;
+    private Growth gr;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        gr = GetComponent<Growth>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(target != null && !target.GetComponent<EnvironmentEffects>().isVisible)
+        for (int ind = 0; ind < 10; ind++)
+        {
+            float sightAngle = Random.Range(-180, 180);
+            Vector2 rayCastDirection = new Vector2(transform.right.x * Mathf.Cos(sightAngle) - transform.right.y * Mathf.Sin(sightAngle), transform.right.x * Mathf.Sin(sightAngle) + transform.right.y * Mathf.Cos(sightAngle));
+            RaycastHit2D raycastHit = Physics2D.Raycast(transform.position, rayCastDirection, sightScale * gr.currentGrowth);
+
+            if (raycastHit)
+            {
+                string colliderTag = raycastHit.collider.tag;
+                //Debug.Log(raycastHit.collider.gameObject.name);
+                if ((colliderTag == "Fish" || colliderTag == "Feed") && raycastHit.rigidbody.GetComponent<EnvironmentEffects>().isVisible)
+                {
+                    
+                    if (target == null)
+                    {
+                        target = raycastHit.rigidbody.gameObject;
+                    }
+                    //else if (raycastHit.rigidbody.GetComponent<Growth>().currentGrowth > target.GetComponent<Growth>().currentGrowth)
+                    else if((raycastHit.transform.position - transform.position).magnitude < (target.transform.position - transform.position).magnitude)
+                    {
+                        target = raycastHit.rigidbody.gameObject;
+                    }
+                }
+
+                if (colliderTag == "Obstacle")
+                {
+                    //Nothing right now
+                }
+            }
+        }
+
+        if(target == null || !target.GetComponent<EnvironmentEffects>().isVisible || (target.transform.position - transform.position).magnitude > sightScale * gr.currentGrowth)
         {
             target = null;
-            isFollowing = false;
+            behaviour = Behaviour.NEUTRAL;
+        }
+        else if(target.GetComponent<Growth>().currentEvo == gr.currentEvo - 1)
+        {
+            behaviour = Behaviour.FOLLOWING;
+        }
+        else if (target.GetComponent<Growth>().currentEvo > gr.currentEvo)
+        {
+            behaviour = Behaviour.FLEEING;
+        }
+        else
+        {
+            behaviour = Behaviour.NEUTRAL;
         }
     }
+}
+
+public enum Behaviour
+{
+    NEUTRAL,
+    FOLLOWING,
+    FLEEING
 }
