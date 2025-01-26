@@ -19,7 +19,7 @@ public class SwimMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         ep = GetComponent<EnemyProperties>();
     }
-
+    
     // Update is called once per frame
     void Update()
     {
@@ -27,10 +27,10 @@ public class SwimMovement : MonoBehaviour
         {
             Rigidbody2D erb = ep.target.GetComponent<Rigidbody2D>();
             Vector3 predictedTargetPosition = erb.position + (erb.position - rb.position).magnitude * erb.velocity / speed;
-            Vector3 rightVector = Vector3.Cross(Vector3.forward, transform.right);
+            Vector3 rightVector = Vector3.Cross(Vector3.forward, -transform.right);
             float angularVelocity = 360f / (2f * Mathf.PI) * turnSpeed;
 
-            bool isInFront = Vector3.Dot(transform.right, predictedTargetPosition) > 0;
+            bool isInFront = Vector3.Dot(-transform.right, predictedTargetPosition) > 0;
 
             if (ep.behaviour == Behaviour.FOLLOWING)
             {
@@ -66,7 +66,7 @@ public class SwimMovement : MonoBehaviour
             {
                 timer = strokeTime;
 
-                rb.velocity = speed * transform.right;
+                rb.velocity = speed * (-transform.right);
             }
             timer -= Time.deltaTime;
         }

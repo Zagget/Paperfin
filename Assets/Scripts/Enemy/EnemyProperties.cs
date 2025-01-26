@@ -32,7 +32,7 @@ public class EnemyProperties : MonoBehaviour
                 if ((colliderTag == "Fish" || colliderTag == "Feed") && raycastHit.rigidbody.GetComponent<EnvironmentEffects>().isVisible)
                 {
                     Growth hitGrowth = raycastHit.rigidbody.GetComponent<Growth>();
-                    if (hitGrowth.currentEvo == gr.currentEvo - 1 || hitGrowth.currentEvo > gr.currentEvo)
+                    if ((hitGrowth.currentEvo == gr.currentEvo - 1 || hitGrowth.currentEvo > gr.currentEvo) && hitGrowth.currentEvo != 0)
                     {
                         if (target == null)
                         {
