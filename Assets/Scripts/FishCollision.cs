@@ -72,6 +72,14 @@ public class FishCollision : Subject
             {
                 return;
             }
+
+            if (fishEvo > collisionEvo)
+            {
+                grow.Grow();
+                AnimationController.Instance.Die(collision.gameObject);
+                return;
+            }
+
             if (fishEvo >= collisionEvo && fishArt > collisionArt)
             {
                 grow.Grow();
