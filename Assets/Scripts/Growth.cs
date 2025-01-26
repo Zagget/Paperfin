@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections;
-using Unity.VisualScripting;
 
 public class Growth : MonoBehaviour
 {
@@ -9,15 +8,13 @@ public class Growth : MonoBehaviour
     [SerializeField] public int currentArt = 1;
 
     [Header("Grow")]
-    [SerializeField] public float currentGrowth = 1;
-    [SerializeField] float growFactor = 0.3f;
-    [SerializeField] float startingGrowth = 1;
+    [SerializeField] float currentGrowth = 1;
+    [SerializeField] float growFactor = 0.1f;
     [SerializeField] float growthTime = 0.5f;
 
     private IEnumerator growthRoutine;
-    //[SerializeField] float growFactor = 0.1f;
-    bool evolvedTo2 = false;
-    bool evolvedTo3 = false;
+    public bool evolvedTo2 = false;
+    public bool evolvedTo3 = false;
 
     void Start()
     {
@@ -25,15 +22,16 @@ public class Growth : MonoBehaviour
         if (currentEvo == 3)
         {
             AnimationController.Instance.PlayC01(this.gameObject);
-            currentGrowth = 2.5F;
+            currentGrowth = 4.7f;
         }
         if (currentEvo == 2)
         {
             AnimationController.Instance.PlayB01(this.gameObject);
-            currentGrowth = 1.5F;
+            currentGrowth = 2.7f;
         }
         if (currentEvo == 1)
         {
+            currentGrowth = 1f;
             AnimationController.Instance.PlayA01(this.gameObject);
         }
         if (currentEvo == 0)
@@ -50,7 +48,7 @@ public class Growth : MonoBehaviour
                 AnimationController.Instance.PlayFeedB(this.gameObject);
             }
         }
-        transform.localScale = new Vector3(currentGrowth, currentGrowth, currentGrowth);
+        Grow();
     }
 
     public float GetCurrentEvo()
@@ -80,22 +78,21 @@ public class Growth : MonoBehaviour
             transform.localScale = new Vector3(Mathf.Sqrt(currentGrowth), Mathf.Sqrt(currentGrowth), Mathf.Sqrt(currentGrowth));
             yield return null;
         }
-        //UpdateBoxCollider();
+
         CheckEvo();
         CheckArt();
     }
 
     private void CheckEvo()
     {
-        // Evo2 growth = 2. Evo3 growth 5
-        if (currentGrowth >= 2.5 && !evolvedTo3)
+        if (currentGrowth >= 4.7 && !evolvedTo3)
         {
             currentEvo = 3;
             currentArt = 1;
             evolvedTo3 = true;
             AnimationController.Instance.PlayC01(this.gameObject);
         }
-        if (currentGrowth >= 1.5 && !evolvedTo2)
+        if (currentGrowth >= 2.7 && !evolvedTo2)
         {
             currentEvo = 2;
             currentArt = 1;
@@ -108,42 +105,45 @@ public class Growth : MonoBehaviour
     {
         if (currentEvo == 3)
         {
-            if (currentGrowth >= 3.5)
+            if (currentGrowth >= 6f)
             {
                 currentArt = 3;
                 AnimationController.Instance.PlayC03(this.gameObject);
+                return;
             }
-            if (currentGrowth >= 2.8)
+            if (currentGrowth >= 5f)
             {
                 currentArt = 2;
                 AnimationController.Instance.PlayC02(this.gameObject);
             }
         }
 
-        if (currentEvo == 2)
+        else if (currentEvo == 2)
         {
-            if (currentGrowth >= 3.8)
+            if (currentGrowth >= 4f)
             {
                 currentArt = 3;
                 AnimationController.Instance.PlayB03(this.gameObject);
+                return;
             }
 
-            if (currentGrowth >= 3.2)
+            if (currentGrowth >= 3.2f)
             {
                 currentArt = 2;
                 AnimationController.Instance.PlayB02(this.gameObject);
             }
         }
 
-        if (currentEvo == 1)
+        else if (currentEvo == 1)
         {
-            if (currentGrowth >= 1.4)
+            if (currentGrowth >= 2f)
             {
                 currentArt = 3;
                 AnimationController.Instance.PlayA03(this.gameObject);
+                return;
             }
 
-            if (currentGrowth >= 1.2)
+            if (currentGrowth >= 1.4f)
             {
                 currentArt = 2;
                 AnimationController.Instance.PlayA02(this.gameObject);

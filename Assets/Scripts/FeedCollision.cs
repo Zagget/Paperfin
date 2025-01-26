@@ -49,7 +49,7 @@ public class FeedCollision : Subject
                 if (collisionEvo == 1)
                 {
                     Debug.Log("PLayer ate feed");
-                    Destroy(this.gameObject);
+                    AnimationController.Instance.Die(this.gameObject);
                     manager.PlayerAte();
                     otherGrowth.Grow();
                 }

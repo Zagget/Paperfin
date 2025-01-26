@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class FishCollision : Subject
@@ -43,30 +44,52 @@ public class FishCollision : Subject
 
             if (isPlayer)
             {
-                if (fishEvo >= collisionEvo || fishEvo == collisionEvo && fishArt < collisionArt)
+                if (fishEvo > collisionEvo)
                 {
                     Debug.Log("The player died");
+                    AnimationController.Instance.Die(collision.gameObject);
                     manager.PlayerDied();
-                    Destroy(collision.gameObject);
                     return;
                 }
+
+                if (fishEvo == collisionEvo && fishArt > collisionArt)
+                {
+                    Debug.Log("The player died");
+                    AnimationController.Instance.Die(collision.gameObject);
+                    manager.PlayerDied();
+                    return;
+                }
+
                 Debug.Log("The player ate");
                 otherGrowth.Grow();
                 manager.PlayerAte();
-                Destroy(this.gameObject);
+                AnimationController.Instance.Die(this.gameObject);
                 return;
             }
-            if (fishEvo >= collisionEvo || fishEvo == collisionEvo && fishArt < collisionArt)
+
+
+            if (fishEvo == collisionEvo && fishArt == collisionArt)
+            {
+                return;
+            }
+
+            if (fishEvo > collisionEvo)
             {
                 grow.Grow();
-                Destroy(collision.gameObject);
+                AnimationController.Instance.Die(collision.gameObject);
+                return;
             }
-            else
+
+            if (fishEvo >= collisionEvo && fishArt > collisionArt)
             {
-                otherGrowth.Grow();
-                manager.EnemyAte(this.gameObject.transform.position);
-                Destroy(this.gameObject);
+                grow.Grow();
+                AnimationController.Instance.Die(collision.gameObject);
+                return;
             }
+
+            otherGrowth.Grow();
+            manager.EnemyAte(this.gameObject.transform.position);
+            AnimationController.Instance.Die(this.gameObject);
         }
     }
 }

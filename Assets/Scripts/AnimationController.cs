@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UIElements;
 
 public class AnimationController : MonoBehaviour
 {
@@ -90,23 +91,28 @@ public class AnimationController : MonoBehaviour
         StartCoroutine(UpdateColliderAfterDelay(fish));
     }
 
+    public void Die(GameObject fish)
+    {
+        Animator animator = fish.GetComponent<Animator>();
+        BoxCollider2D collider = fish.GetComponent<BoxCollider2D>();
+        Destroy(collider);
+        animator.Play("death_anim");
+        StartCoroutine(DestroyAfterDelay(fish));
+    }
+
     private IEnumerator UpdateColliderAfterDelay(GameObject fish)
     {
-        // Wait for one frame to ensure that the animation or sprite has updated.
         yield return new WaitForSeconds(1);
 
         // Now call UpdateCollider after the delay
         UpdateCollider(fish);
     }
 
-    private void Update()
+    private IEnumerator DestroyAfterDelay(GameObject fish)
     {
-        GameObject fish = GameObject.Find("Player");
+        yield return new WaitForSeconds(0.8f);
 
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            UpdateCollider(fish);
-        }
+        Destroy(fish);
     }
 
     private void UpdateCollider(GameObject fish)

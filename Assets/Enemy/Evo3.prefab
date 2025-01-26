@@ -62,8 +62,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentEvo: 3
+  currentArt: 1
   currentGrowth: 1
-  growFactor: 0.25
+  growFactor: 0.005
+  growthTime: 0.5
+  evolvedTo2: 0
+  evolvedTo3: 0
 --- !u!212 &8246931844414794212
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -1,19 +1,31 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class EnvironmentEffects : MonoBehaviour
+public class EnvironmentEffects : MonoBehaviour, IObserver
 {
+    [SerializeField] Subject playerSubject;
+
     public bool isVisible = true;
-    // Start is called before the first frame update
-    void Start()
+
+
+    public void OnNotify(Action action)
     {
-        
+        if (action == Action.Hide)
+        {
+            isVisible = false;
+        }
+        if (action == Action.Normal)
+        {
+            isVisible = true;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnEnable()
     {
-        
+        playerSubject.AddObserver(this);
+    }
+
+    private void OnDisable()
+    {
+        playerSubject.RemoveObserver(this);
     }
 }
