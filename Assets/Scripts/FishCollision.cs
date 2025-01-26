@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class FishCollision : Subject
@@ -43,13 +44,22 @@ public class FishCollision : Subject
 
             if (isPlayer)
             {
-                if (fishEvo >= collisionEvo && fishArt > collisionArt)
+                if (fishEvo > collisionEvo)
                 {
                     Debug.Log("The player died");
                     AnimationController.Instance.Die(collision.gameObject);
                     manager.PlayerDied();
                     return;
                 }
+
+                if (fishEvo == collisionEvo && fishArt > collisionArt)
+                {
+                    Debug.Log("The player died");
+                    AnimationController.Instance.Die(collision.gameObject);
+                    manager.PlayerDied();
+                    return;
+                }
+
                 Debug.Log("The player ate");
                 otherGrowth.Grow();
                 manager.PlayerAte();
@@ -62,6 +72,14 @@ public class FishCollision : Subject
             {
                 return;
             }
+
+            if (fishEvo > collisionEvo)
+            {
+                grow.Grow();
+                AnimationController.Instance.Die(collision.gameObject);
+                return;
+            }
+
             if (fishEvo >= collisionEvo && fishArt > collisionArt)
             {
                 grow.Grow();
