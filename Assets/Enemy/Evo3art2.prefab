@@ -9,14 +9,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3255177048625674283}
-  - component: {fileID: 6255109685552658770}
   - component: {fileID: 325272022153641653}
+  - component: {fileID: 6255109685552658770}
   - component: {fileID: 8246931844414794212}
   - component: {fileID: 9189029154538632405}
-  - component: {fileID: -5375367714483111796}
-  - component: {fileID: 5282263847610208150}
+  - component: {fileID: 9015874263459438432}
+  - component: {fileID: -648083424763667850}
   m_Layer: 0
-  m_Name: Evo2
+  m_Name: Evo3art2
   m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37,25 +37,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6255109685552658770
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3548032279972608157}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e3bc0fe0f86fd44ebd7b7eb385c16f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentEvo: 2
-  currentArt: 1
-  currentGrowth: 1
-  growFactor: 0.005
-  growthTime: 0.5
-  evolvedTo2: 1
-  evolvedTo3: 0
 --- !u!114 &325272022153641653
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68,6 +49,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b07e51c69ea568347a870015dc45ca37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6255109685552658770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3548032279972608157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e3bc0fe0f86fd44ebd7b7eb385c16f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentEvo: 3
+  currentArt: 2
+  currentGrowth: 1
+  growFactor: 0.005
+  growthTime: 0.5
+  evolvedTo2: 1
+  evolvedTo3: 1
 --- !u!212 &8246931844414794212
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -141,7 +141,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!50 &-5375367714483111796
+--- !u!50 &9015874263459438432
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -168,7 +168,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!61 &5282263847610208150
+--- !u!61 &-648083424763667850
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

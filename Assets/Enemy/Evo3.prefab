@@ -66,8 +66,8 @@ MonoBehaviour:
   currentGrowth: 1
   growFactor: 0.005
   growthTime: 0.5
-  evolvedTo2: 0
-  evolvedTo3: 0
+  evolvedTo2: 1
+  evolvedTo3: 1
 --- !u!212 &8246931844414794212
 SpriteRenderer:
   m_ObjectHideFlags: 0

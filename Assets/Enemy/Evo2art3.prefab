@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -5375367714483111796}
   - component: {fileID: 5282263847610208150}
   m_Layer: 0
-  m_Name: Evo2
+  m_Name: Evo2art3
   m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentEvo: 2
-  currentArt: 1
+  currentArt: 3
   currentGrowth: 1
   growFactor: 0.005
   growthTime: 0.5
