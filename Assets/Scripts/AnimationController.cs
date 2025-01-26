@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UIElements;
 
 public class AnimationController : MonoBehaviour
 {
@@ -93,6 +94,8 @@ public class AnimationController : MonoBehaviour
     public void Die(GameObject fish)
     {
         Animator animator = fish.GetComponent<Animator>();
+        BoxCollider2D collider = fish.GetComponent<BoxCollider2D>();
+        Destroy(collider);
         animator.Play("death_anim");
         StartCoroutine(DestroyAfterDelay(fish));
     }

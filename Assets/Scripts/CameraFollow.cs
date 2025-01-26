@@ -15,7 +15,7 @@ public class CameraFollow : MonoBehaviour, IObserver
     [SerializeField] float targetFOV = 60;
 
     float minFOV = 60;
-    float maxFOV = 110;
+    float maxFOV = 100;
 
     float currentFOVVelocity = 0;
     Vector3 offset = new Vector3(0f, 0f, -10f);

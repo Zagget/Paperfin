@@ -43,7 +43,7 @@ public class FishCollision : Subject
 
             if (isPlayer)
             {
-                if (fishEvo >= collisionEvo || fishEvo == collisionEvo && fishArt < collisionArt)
+                if (fishEvo >= collisionEvo && fishArt > collisionArt)
                 {
                     Debug.Log("The player died");
                     AnimationController.Instance.Die(collision.gameObject);
@@ -56,17 +56,22 @@ public class FishCollision : Subject
                 AnimationController.Instance.Die(this.gameObject);
                 return;
             }
-            if (fishEvo >= collisionEvo || fishEvo == collisionEvo && fishArt < collisionArt)
+
+
+            if (fishEvo == collisionEvo && fishArt == collisionArt)
+            {
+                return;
+            }
+            if (fishEvo >= collisionEvo && fishArt > collisionArt)
             {
                 grow.Grow();
                 AnimationController.Instance.Die(collision.gameObject);
+                return;
             }
-            else
-            {
-                otherGrowth.Grow();
-                manager.EnemyAte(this.gameObject.transform.position);
-                AnimationController.Instance.Die(this.gameObject);
-            }
+
+            otherGrowth.Grow();
+            manager.EnemyAte(this.gameObject.transform.position);
+            AnimationController.Instance.Die(this.gameObject);
         }
     }
 }
