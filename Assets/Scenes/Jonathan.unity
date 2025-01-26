@@ -429,6 +429,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f4318c92375e4916b739221750e05a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerSubject: {fileID: 303508353}
   isVisible: 1
 --- !u!1 &197880432 stripped
 GameObject:
@@ -447,6 +448,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f4318c92375e4916b739221750e05a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerSubject: {fileID: 303508353}
   isVisible: 1
 --- !u!1 &303508350
 GameObject:
@@ -503,8 +505,9 @@ MonoBehaviour:
   currentArt: 1
   currentGrowth: 1
   growFactor: 0.2
-  startingGrowth: 1
   growthTime: 0.5
+  evolvedTo2: 0
+  evolvedTo3: 0
 --- !u!114 &303508353
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -693,6 +696,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f4318c92375e4916b739221750e05a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerSubject: {fileID: 303508353}
   isVisible: 1
 --- !u!1 &370743002
 GameObject:
@@ -1072,6 +1076,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f4318c92375e4916b739221750e05a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerSubject: {fileID: 303508353}
   isVisible: 1
 --- !u!1001 &688329285
 PrefabInstance:
@@ -1190,6 +1195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f4318c92375e4916b739221750e05a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerSubject: {fileID: 303508353}
   isVisible: 1
 --- !u!1 &740873158 stripped
 GameObject:
@@ -1208,6 +1214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f4318c92375e4916b739221750e05a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerSubject: {fileID: 303508353}
   isVisible: 1
 --- !u!1 &782614681
 GameObject:
@@ -1379,8 +1386,9 @@ MonoBehaviour:
   currentArt: 1
   currentGrowth: 1
   growFactor: 0
-  startingGrowth: 1
   growthTime: 0.5
+  evolvedTo2: 0
+  evolvedTo3: 0
 --- !u!114 &782614688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1679,6 +1687,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f4318c92375e4916b739221750e05a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerSubject: {fileID: 303508353}
   isVisible: 1
 --- !u!1 &1003509891 stripped
 GameObject:
@@ -1697,6 +1706,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f4318c92375e4916b739221750e05a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerSubject: {fileID: 303508353}
   isVisible: 1
 --- !u!1 &1018965084 stripped
 GameObject:
@@ -1715,6 +1725,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f4318c92375e4916b739221750e05a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerSubject: {fileID: 303508353}
   isVisible: 1
 --- !u!1 &1027610215 stripped
 GameObject:
@@ -1733,6 +1744,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f4318c92375e4916b739221750e05a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerSubject: {fileID: 303508353}
   isVisible: 1
 --- !u!1 &1078189769 stripped
 GameObject:
@@ -1751,6 +1763,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f4318c92375e4916b739221750e05a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerSubject: {fileID: 303508353}
   isVisible: 1
 --- !u!114 &1078189785
 MonoBehaviour:
@@ -1865,6 +1878,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f4318c92375e4916b739221750e05a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerSubject: {fileID: 303508353}
   isVisible: 1
 --- !u!1 &1169096531
 GameObject:
@@ -2036,8 +2050,9 @@ MonoBehaviour:
   currentArt: 1
   currentGrowth: 1
   growFactor: 0
-  startingGrowth: 1
   growthTime: 0.5
+  evolvedTo2: 0
+  evolvedTo3: 0
 --- !u!114 &1169096538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2449,8 +2464,9 @@ MonoBehaviour:
   currentArt: 1
   currentGrowth: 1
   growFactor: 0
-  startingGrowth: 1
   growthTime: 0.5
+  evolvedTo2: 0
+  evolvedTo3: 0
 --- !u!114 &1360351423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2567,6 +2583,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f4318c92375e4916b739221750e05a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerSubject: {fileID: 303508353}
   isVisible: 1
 --- !u!1001 &1502570549
 PrefabInstance:
@@ -2649,6 +2666,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f4318c92375e4916b739221750e05a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerSubject: {fileID: 303508353}
   isVisible: 1
 --- !u!1 &1591171163 stripped
 GameObject:
@@ -2667,6 +2685,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f4318c92375e4916b739221750e05a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerSubject: {fileID: 303508353}
   isVisible: 1
 --- !u!1001 &1612506723
 PrefabInstance:
@@ -2900,6 +2919,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f4318c92375e4916b739221750e05a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerSubject: {fileID: 303508353}
   isVisible: 1
 --- !u!1001 &1735139376
 PrefabInstance:
@@ -2978,6 +2998,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f4318c92375e4916b739221750e05a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerSubject: {fileID: 303508353}
   isVisible: 1
 --- !u!1 &1766888860
 GameObject:
@@ -3344,8 +3365,9 @@ MonoBehaviour:
   currentArt: 1
   currentGrowth: 1
   growFactor: 0
-  startingGrowth: 1
   growthTime: 0.5
+  evolvedTo2: 0
+  evolvedTo3: 0
 --- !u!114 &1838626538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3411,6 +3433,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f4318c92375e4916b739221750e05a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerSubject: {fileID: 303508353}
   isVisible: 1
 --- !u!1 &2018765855 stripped
 GameObject:
@@ -3429,6 +3452,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f4318c92375e4916b739221750e05a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerSubject: {fileID: 303508353}
   isVisible: 1
 --- !u!114 &2018765871
 MonoBehaviour:

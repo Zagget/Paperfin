@@ -8,7 +8,7 @@ public class Growth : MonoBehaviour
     [SerializeField] public int currentArt = 1;
 
     [Header("Grow")]
-    [SerializeField] float currentGrowth = 1;
+    [SerializeField] public float currentGrowth = 1;
     [SerializeField] float growFactor = 0.1f;
     [SerializeField] float growthTime = 0.5f;
 

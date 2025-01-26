@@ -31,15 +31,18 @@ public class EnemyProperties : MonoBehaviour
                 //Debug.Log(raycastHit.collider.gameObject.name);
                 if ((colliderTag == "Fish" || colliderTag == "Feed") && raycastHit.rigidbody.GetComponent<EnvironmentEffects>().isVisible)
                 {
-                    
-                    if (target == null)
+                    Growth hitGrowth = raycastHit.rigidbody.GetComponent<Growth>();
+                    if (hitGrowth.currentEvo == gr.currentEvo - 1 || hitGrowth.currentEvo > gr.currentEvo)
                     {
-                        target = raycastHit.rigidbody.gameObject;
-                    }
-                    //else if (raycastHit.rigidbody.GetComponent<Growth>().currentGrowth > target.GetComponent<Growth>().currentGrowth)
-                    else if((raycastHit.transform.position - transform.position).magnitude < (target.transform.position - transform.position).magnitude)
-                    {
-                        target = raycastHit.rigidbody.gameObject;
+                        if (target == null)
+                        {
+                            target = raycastHit.rigidbody.gameObject;
+                        }
+                        //else if (raycastHit.rigidbody.GetComponent<Growth>().currentGrowth > target.GetComponent<Growth>().currentGrowth)
+                        else if (hitGrowth.currentEvo > target.GetComponent<Growth>().currentEvo || (hitGrowth.currentEvo == target.GetComponent<Growth>().currentEvo && (raycastHit.transform.position - transform.position).magnitude < (target.transform.position - transform.position).magnitude))
+                        {
+                            target = raycastHit.rigidbody.gameObject;
+                        }
                     }
                 }
 
