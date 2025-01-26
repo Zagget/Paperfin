@@ -16,7 +16,7 @@ public class EnemyProperties : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!target.GetComponent<EnvironmentEffects>().isVisible)
+        if(target != null && !target.GetComponent<EnvironmentEffects>().isVisible)
         {
             target = null;
             isFollowing = false;
