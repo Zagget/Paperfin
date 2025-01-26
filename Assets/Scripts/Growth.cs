@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections;
-using Unity.VisualScripting;
 
 public class Growth : MonoBehaviour
 {
@@ -10,8 +9,7 @@ public class Growth : MonoBehaviour
 
     [Header("Grow")]
     [SerializeField] float currentGrowth = 1;
-    [SerializeField] float growFactor = 0.3f;
-    [SerializeField] float startingGrowth = 1;
+    [SerializeField] float growFactor = 0.05f;
     [SerializeField] float growthTime = 0.5f;
 
     private IEnumerator growthRoutine;
@@ -80,14 +78,13 @@ public class Growth : MonoBehaviour
             transform.localScale = new Vector3(Mathf.Sqrt(currentGrowth), Mathf.Sqrt(currentGrowth), Mathf.Sqrt(currentGrowth));
             yield return null;
         }
-        //UpdateBoxCollider();
+
         CheckEvo();
         CheckArt();
     }
 
     private void CheckEvo()
     {
-        // Evo2 growth = 2. Evo3 growth 5
         if (currentGrowth >= 2.5 && !evolvedTo3)
         {
             currentEvo = 3;
@@ -120,22 +117,22 @@ public class Growth : MonoBehaviour
             }
         }
 
-        if (currentEvo == 2)
+        else if (currentEvo == 2)
         {
-            if (currentGrowth >= 3.8)
+            if (currentGrowth >= 2.1)
             {
                 currentArt = 3;
                 AnimationController.Instance.PlayB03(this.gameObject);
             }
 
-            if (currentGrowth >= 3.2)
+            if (currentGrowth >= 1.8)
             {
                 currentArt = 2;
                 AnimationController.Instance.PlayB02(this.gameObject);
             }
         }
 
-        if (currentEvo == 1)
+        else if (currentEvo == 1)
         {
             if (currentGrowth >= 1.4)
             {
