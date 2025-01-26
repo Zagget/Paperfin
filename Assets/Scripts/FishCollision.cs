@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FishCollision : Subject
 {
-    Rigidbody rb;
+    Rigidbody2D rb;
     Growth grow;
     GameManager manager;
 
@@ -12,14 +10,14 @@ public class FishCollision : Subject
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody2D>();
         grow = GetComponent<Growth>();
 
         fishEvo = grow.GetCurrentEvo();
         manager = FindFirstObjectByType<GameManager>();
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Fish"))
         {
@@ -51,7 +49,9 @@ public class FishCollision : Subject
                     return;
                 }
                 Debug.Log("The player ate");
+                otherGrowth.Grow();
                 manager.PlayerAte();
+                Destroy(this.gameObject);
                 return;
             }
             if (fishEvo > collisionEvo)

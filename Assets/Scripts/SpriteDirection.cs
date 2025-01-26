@@ -3,7 +3,7 @@ using UnityEngine;
 public class SpriteDirection : MonoBehaviour
 {
     [SerializeField] Transform spriteTransform;
-    private Rigidbody rb;
+    private Rigidbody2D rb;
 
     void Start()
     {
@@ -12,7 +12,7 @@ public class SpriteDirection : MonoBehaviour
             Debug.LogError("Sprite Transform is not assigned in the Inspector.");
         }
 
-        rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody2D>();
         if (rb == null)
         {
             Debug.LogError("No RigidBody on GameObject");

@@ -18,12 +18,12 @@ public class PlayerController : Subject
     float lastDashTime = 0;
     bool isDashing = false;
 
-    Rigidbody rb;
+    Rigidbody2D rb;
     Vector2 velocity;
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     void Update()
@@ -105,7 +105,7 @@ public class PlayerController : Subject
     }
 
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("SeaWeed"))
         {
@@ -114,7 +114,7 @@ public class PlayerController : Subject
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Feed"))
         {
@@ -123,7 +123,7 @@ public class PlayerController : Subject
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("SeaWeed"))
         {

@@ -10,14 +10,8 @@ public class Growth : MonoBehaviour
     [SerializeField] float currentGrowth = 1;
     [SerializeField] float growFactor = 0.3f;
 
-    BoxCollider boxCollider;
-    SpriteRenderer spriteRenderer;
-
     void Start()
     {
-        boxCollider = GetComponent<BoxCollider>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
-
         float startSize = 1f;
         if (currentEvo == 3)
         {
@@ -48,7 +42,6 @@ public class Growth : MonoBehaviour
             }
         }
         transform.localScale = new Vector3(startSize, startSize, startSize);
-        //UpdateBoxCollider();
     }
 
     public float GetCurrentEvo()
@@ -70,10 +63,12 @@ public class Growth : MonoBehaviour
         if (currentGrowth >= 3)
         {
             currentEvo = 3;
+            AnimationController.Instance.PlayEvo3(this.gameObject);
         }
         if (currentGrowth >= 2)
         {
             currentEvo = 2;
+            AnimationController.Instance.PlayEvo2(this.gameObject);
         }
     }
 }
