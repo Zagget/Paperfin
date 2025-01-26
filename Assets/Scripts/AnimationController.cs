@@ -20,22 +20,60 @@ public class AnimationController : MonoBehaviour
         }
     }
 
-    public void PlayEvo1(GameObject fish)
+    public void PlayA01(GameObject fish)
     {
         Animator animator = fish.GetComponent<Animator>();
         animator.Play("a_01_a");
         StartCoroutine(UpdateColliderAfterDelay(fish));
     }
-    public void PlayEvo2(GameObject fish)
+    public void PlayA02(GameObject fish)
+    {
+        Animator animator = fish.GetComponent<Animator>();
+        animator.Play("a_02_anim");
+        StartCoroutine(UpdateColliderAfterDelay(fish));
+    }
+    public void PlayA03(GameObject fish)
+    {
+        Animator animator = fish.GetComponent<Animator>();
+        animator.Play("a_03_a");
+        StartCoroutine(UpdateColliderAfterDelay(fish));
+    }
+
+
+    public void PlayB01(GameObject fish)
     {
         Animator animator = fish.GetComponent<Animator>();
         animator.Play("b_01_a");
         StartCoroutine(UpdateColliderAfterDelay(fish));
     }
-    public void PlayEvo3(GameObject fish)
+    public void PlayB02(GameObject fish)
+    {
+        Animator animator = fish.GetComponent<Animator>();
+        animator.Play("b_02_a");
+        StartCoroutine(UpdateColliderAfterDelay(fish));
+    }
+    public void PlayB03(GameObject fish)
+    {
+        Animator animator = fish.GetComponent<Animator>();
+        animator.Play("b_03_a");
+        StartCoroutine(UpdateColliderAfterDelay(fish));
+    }
+    public void PlayC01(GameObject fish)
     {
         Animator animator = fish.GetComponent<Animator>();
         animator.Play("c_01_a");
+        StartCoroutine(UpdateColliderAfterDelay(fish));
+    }
+    public void PlayC02(GameObject fish)
+    {
+        Animator animator = fish.GetComponent<Animator>();
+        animator.Play("c_02_a");
+        StartCoroutine(UpdateColliderAfterDelay(fish));
+    }
+    public void PlayC03(GameObject fish)
+    {
+        Animator animator = fish.GetComponent<Animator>();
+        animator.Play("c_03_a");
         StartCoroutine(UpdateColliderAfterDelay(fish));
     }
 

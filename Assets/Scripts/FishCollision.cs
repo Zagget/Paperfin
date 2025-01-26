@@ -7,7 +7,7 @@ public class FishCollision : Subject
     GameManager manager;
 
     float fishEvo;
-
+    float fishArt;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -37,11 +37,13 @@ public class FishCollision : Subject
             }
 
             fishEvo = grow.GetCurrentEvo();
+            fishArt = grow.GetCurrentArt();
             float collisionEvo = otherGrowth.GetCurrentEvo();
+            float collisionArt = otherGrowth.GetCurrentArt();
 
             if (isPlayer)
             {
-                if (fishEvo >= collisionEvo)
+                if (fishEvo >= collisionEvo || fishEvo == collisionEvo && fishArt < collisionArt)
                 {
                     Debug.Log("The player died");
                     manager.PlayerDied();
@@ -54,7 +56,7 @@ public class FishCollision : Subject
                 Destroy(this.gameObject);
                 return;
             }
-            if (fishEvo > collisionEvo)
+            if (fishEvo >= collisionEvo || fishEvo == collisionEvo && fishArt < collisionArt)
             {
                 grow.Grow();
                 Destroy(collision.gameObject);
