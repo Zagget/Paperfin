@@ -5,20 +5,51 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour, IObserver
 {
     [SerializeField] Subject gameManager;
+    [SerializeField] GameObject player;
     [Header("Enemies")]
-    [SerializeField] List<GameObject> enemies;
+    [SerializeField] List<GameObject> Evo1;
+    [SerializeField] List<GameObject> Evo2;
+    [SerializeField] List<GameObject> Evo3;
 
     [SerializeField] Transform PlayerPos;
 
+    float currentEvo = 1;
+    Growth grow;
+
+    void Start()
+    {
+        grow = player.GetComponent<Growth>();
+    }
+
     private void SpawnEnemy()
     {
+        Debug.Log("Spawned new enemy");
+        currentEvo = grow.GetCurrentEvo();
+
         Vector2 spawnPos = GetSpawnPos();
-
-        for (int i = 0; i < enemies.Count; i++)
+        List<GameObject> enemies;
+        switch (currentEvo)
         {
-
+            case 1:
+                enemies = Evo1;
+                break;
+            case 2:
+                enemies = Evo2;
+                break;
+            case 3:
+                enemies = Evo3;
+                break;
+            default:
+                enemies = Evo1;
+                break;
         }
+
+        int randomEnemy = Random.Range(0, 3);
+
+        Instantiate(enemies[randomEnemy], spawnPos, Quaternion.identity);
     }
+
+
 
     public void OnNotify(Action action)
     {
@@ -32,9 +63,7 @@ public class EnemyManager : MonoBehaviour, IObserver
     {
         if (Input.GetKeyDown(KeyCode.B))
         {
-            Vector2 test = GetSpawnPos();
-
-            Debug.Log($"pos at x: {test.x}  y: {test.y}");
+            SpawnEnemy();
         }
     }
 
@@ -72,6 +101,7 @@ public class EnemyManager : MonoBehaviour, IObserver
                 return new Vector2(x, y);
         }
     }
+
     private void OnEnable()
     {
         gameManager.AddObserver(this);

@@ -41,7 +41,7 @@ public class CameraFollow : MonoBehaviour, IObserver
             transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
         }
 
-        cam.fieldOfView = Mathf.SmoothDamp(cam.fieldOfView, targetFOV, ref currentFOVVelocity, fovSmoothTime);
+
     }
 
     public void IncreaseFOV(float playerScale)
@@ -58,11 +58,11 @@ public class CameraFollow : MonoBehaviour, IObserver
             followplayer = false;
         }
 
-        if (action == Action.Eat)
-        {
-            float playerScale = target.localScale.x; // Assuming uniform scaling.
-            IncreaseFOV(playerScale);
-        }
+        // if (action == Action.Eat)
+        // {
+        //     float playerScale = target.localScale.x; // Assuming uniform scaling.
+        //     IncreaseFOV(playerScale);
+        // }
 
         if (action == Action.Hide)
         {
