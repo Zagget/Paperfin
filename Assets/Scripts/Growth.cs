@@ -1,10 +1,12 @@
 using UnityEngine;
 using System.Collections;
+using Unity.VisualScripting;
 
 public class Growth : MonoBehaviour
 {
     [Header("Evolution")]
     [SerializeField] float currentEvo = 1;
+    [SerializeField] float currentArt = 1;
 
     [Header("Grow")]
     [SerializeField] float currentGrowth = 1;
@@ -13,27 +15,30 @@ public class Growth : MonoBehaviour
     [SerializeField] float growthTime = 0.5f;
 
     private IEnumerator growthRoutine;
-
+    //[SerializeField] float growFactor = 0.1f;
+    bool evolvedTo2 = false;
+    bool evolvedTo3 = false;
 
     void Start()
     {
-        float startSize = 1f;
+
         if (currentEvo == 3)
         {
-            AnimationController.Instance.PlayEvo3(this.gameObject);
-            startSize = 4;
+            AnimationController.Instance.PlayC01(this.gameObject);
+            currentGrowth = 2.5F;
         }
         if (currentEvo == 2)
         {
-            AnimationController.Instance.PlayEvo2(this.gameObject);
-            startSize = 2;
+            AnimationController.Instance.PlayB01(this.gameObject);
+            currentGrowth = 1.5F;
         }
         if (currentEvo == 1)
         {
-            AnimationController.Instance.PlayEvo1(this.gameObject);
+            AnimationController.Instance.PlayA01(this.gameObject);
         }
         if (currentEvo == 0)
         {
+            currentGrowth = 0.5f;
             int randomFeed = Random.Range(0, 2);
             if (randomFeed == 1)
             {
@@ -45,12 +50,17 @@ public class Growth : MonoBehaviour
                 AnimationController.Instance.PlayFeedB(this.gameObject);
             }
         }
-        transform.localScale = Vector3.one * startSize;
+        transform.localScale = new Vector3(currentGrowth, currentGrowth, currentGrowth);
     }
 
     public float GetCurrentEvo()
     {
         return currentEvo;
+    }
+
+    public float GetCurrentArt()
+    {
+        return currentArt;
     }
 
     public void Grow()
@@ -69,21 +79,75 @@ public class Growth : MonoBehaviour
             currentGrowth += Time.deltaTime * growthAmount / growthTime;
             transform.localScale = new Vector3(Mathf.Sqrt(currentGrowth), Mathf.Sqrt(currentGrowth), Mathf.Sqrt(currentGrowth));
             yield return null;
+        }
+        //UpdateBoxCollider();
+        CheckEvo();
+        CheckArt();
+    }
 
-            CheckEvo();
+    private void CheckEvo()
+    {
+        // Evo2 growth = 2. Evo3 growth 5
+        if (currentGrowth >= 2.5 && !evolvedTo3)
+        {
+            currentEvo = 3;
+            currentArt = 1;
+            evolvedTo3 = true;
+            AnimationController.Instance.PlayC01(this.gameObject);
+        }
+        if (currentGrowth >= 1.5 && !evolvedTo2)
+        {
+            currentEvo = 2;
+            currentArt = 1;
+            evolvedTo2 = true;
+            AnimationController.Instance.PlayB01(this.gameObject);
         }
     }
 
-    public void CheckEvo()
+    private void CheckArt()
     {
-        // Evo2 growth = 2. Evo3 growth 5
-        if (currentGrowth >= 4)
+        if (currentEvo == 3)
         {
-            currentEvo = 3;
+            if (currentGrowth >= 3.5)
+            {
+                currentArt = 3;
+                AnimationController.Instance.PlayC03(this.gameObject);
+            }
+            if (currentGrowth >= 2.8)
+            {
+                currentArt = 2;
+                AnimationController.Instance.PlayC02(this.gameObject);
+            }
         }
-        if (currentGrowth >= 2)
+
+        if (currentEvo == 2)
         {
-            currentEvo = 2;
+            if (currentGrowth >= 3.8)
+            {
+                currentArt = 3;
+                AnimationController.Instance.PlayB03(this.gameObject);
+            }
+
+            if (currentGrowth >= 3.2)
+            {
+                currentArt = 2;
+                AnimationController.Instance.PlayB02(this.gameObject);
+            }
+        }
+
+        if (currentEvo == 1)
+        {
+            if (currentGrowth >= 1.4)
+            {
+                currentArt = 3;
+                AnimationController.Instance.PlayA03(this.gameObject);
+            }
+
+            if (currentGrowth >= 1.2)
+            {
+                currentArt = 2;
+                AnimationController.Instance.PlayA02(this.gameObject);
+            }
         }
     }
 }
