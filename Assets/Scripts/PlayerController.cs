@@ -114,15 +114,6 @@ public class PlayerController : Subject
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Feed"))
-        {
-            GameManager.Instance.PlayerAte();
-            Destroy(collision.gameObject);
-        }
-    }
-
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("SeaWeed"))
