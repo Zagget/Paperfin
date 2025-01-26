@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class GameManager : Subject
 {
@@ -22,6 +23,11 @@ public class GameManager : Subject
         }
     }
 
+    public void LoadMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
     public void PlayerAte()
     {
         NotifyObservers(Action.Eat);
@@ -31,6 +37,7 @@ public class GameManager : Subject
     public void PlayerDied()
     {
         NotifyObservers(Action.Die);
+        LoadMenu();
     }
 
     public void FishEvolve(GameObject fish)
